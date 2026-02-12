@@ -1,0 +1,12 @@
+{
+  "name": "skills",
+  "version": "0.1.0",
+  "description": "A modular UX skill system — 13 focused files that load expert-level design guidance exactly when a task needs it.",
+  "license": "MIT",
+  "keywords": ["agent-skills", "claude", "ux", "design-system", "frontend"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/itsHendri/skills.git"
+  },
+  "homepage": "https://hendri.design/notes/ai-skill-system-for-designers"
+}
