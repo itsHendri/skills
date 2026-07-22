@@ -80,7 +80,7 @@ Component set (Variants)
 **Property naming conventions:**
 - `Size`: sm / md / lg
 - `Intent` or `Variant`: primary / secondary / ghost / danger
-- `State`: default / hover / focus / active / disabled / loading / error
+- `State`: default / hover / focus / active / disabled / loading / error / empty / success
 - `Has icon`: true / false
 - `Icon position`: left / right
 
@@ -177,6 +177,41 @@ When presenting to stakeholders:
 - Annotate the prototype with decision rationale, not just what it shows
 
 ---
+
+---
+
+## Dev-Ready Checklist
+
+Before marking any frame ready for engineering:
+
+- [ ] All layers named — no "Frame 247" or "Rectangle 12"
+- [ ] Components used, not detached instances
+- [ ] All tokens applied via Figma variables/styles — no raw values
+- [ ] All states designed: hover, focus, active, disabled, loading, error, empty
+- [ ] Mobile frame exists alongside desktop
+- [ ] Interactions annotated (sticky notes or annotation layer)
+- [ ] Edge cases noted: empty, overflow, very long strings, error
+- [ ] Assets marked for export with correct format settings
+- [ ] Prototype links attached where flow context matters
+- [ ] Real content used — no Lorem Ipsum
+
+---
+
+## Asset Export Specs
+
+| Asset type | Format | Notes |
+|------------|--------|-------|
+| Photos / raster | WebP + JPEG fallback | 1x and 2x |
+| UI illustrations | SVG | Preferred — scales without quality loss |
+| Icons | SVG | 16, 20, 24px variants |
+| App icons | PNG | All required platform sizes |
+| OG / social images | PNG or JPEG | 1200×630px |
+
+**SVG rules:**
+- Remove `width`/`height` attributes — let CSS control size
+- Use `currentColor` for icon fill/stroke so they inherit text color
+- Name all layers descriptively in Figma before export
+
 
 ## Anti-Patterns
 

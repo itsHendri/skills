@@ -1,7 +1,7 @@
 {
   "name": "skills",
-  "version": "0.1.0",
-  "description": "A modular UX skill system — 13 focused files that load expert-level design guidance exactly when a task needs it.",
+  "version": "0.2.0",
+  "description": "A modular UX skill system — A modular skill system — focused files that load expert-level guidance exactly when a task needs it.",
   "license": "MIT",
   "keywords": ["agent-skills", "claude", "ux", "design-system", "frontend"],
   "repository": {

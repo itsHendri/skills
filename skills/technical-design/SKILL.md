@@ -242,6 +242,50 @@ text-overflow: ellipsis; /* Truncation — requires: overflow: hidden + white-sp
 
 ---
 
+## Vertical Rhythm
+
+Line-height should be the base unit for all vertical spacing. If body text has
+`line-height: 1.5` on 16px type (= 24px), spacing values should be multiples of 24px.
+This creates subconscious harmony — text and space share a mathematical foundation.
+
+```css
+/* Base: 16px × 1.5 = 24px rhythm unit */
+--line-height-body: 1.5;
+--space-rhythm: 1.5rem; /* = 24px */
+
+p { margin-bottom: var(--space-rhythm); }
+h2 { margin-top: calc(var(--space-rhythm) * 2); } /* 48px — visual separation */
+```
+
+**Non-obvious:** increase line-height for light text on dark backgrounds. Perceived
+weight is lighter, so text needs more breathing room — add 0.05–0.1 to your normal
+line-height.
+
+---
+
+## Optical Adjustments
+
+Geometry and perception don't always agree. Trust your eyes, not the numbers.
+
+- **Text optical alignment:** text at `margin-left: 0` *looks* indented due to
+  letterform whitespace (the space inside a capital 'T', curved side of 'C', etc.).
+  Use a small negative margin (`-0.03em` to `-0.05em`) to optically align headlines
+  to their container edge.
+
+- **Icon centering:** geometrically centered icons often look off-center. Play icons
+  (triangles) need to shift slightly right toward their direction. Arrows shift toward
+  the direction they point. When something looks wrong but measurements say it's right,
+  the measurements are wrong.
+
+- **Button padding:** equal padding top/bottom rarely looks equal — optical weight
+  varies by font. Reduce top padding by 1–2px if the label looks low.
+
+- **Icon-to-label alignment:** align icons to the cap-height of the label text, not
+  the line-height midpoint. This is usually `align-items: center` with a tiny negative
+  `margin-top` on the icon.
+
+---
+
 ## Anti-Patterns
 
 - Designing fixed-width layouts that can't flex — use min/max widths, not fixed

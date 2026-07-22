@@ -9,7 +9,7 @@ description: >
   for: "how do I explain this to engineering", "PM wants a rationale", "engineer is pushing
   back", "how do I run a design review", or any situation where the goal is persuasion,
   alignment, or clarity with another person — not producing a Figma annotation or spec file.
-  For technical Figma handoff artifacts (token specs, Dev Mode, annotations), use design-handoff.
+  For Figma craft, Dev Mode prep, and asset export, use prototyping. For token architecture, use design-systems.
 ---
 
 # Design Communication
@@ -201,6 +201,65 @@ When you can't present live, record a 3–5 min walkthrough:
 ```
 
 ---
+
+---
+
+## Behavior Specification Format
+
+For complex interactions, annotate using this consistent format — in sticky notes,
+an annotation layer, or a linked spec doc:
+
+```
+Component:   [Name]
+Trigger:     [User action — click, hover, keyboard, scroll]
+Condition:   [When does this apply?]
+Action:      [What the UI does]
+Duration:    [Animation timing if applicable]
+State after: [What state is the component in after?]
+
+Example:
+Component:   Dropdown menu
+Trigger:     Click on trigger button
+Condition:   Menu is closed
+Action:      Menu opens below trigger, first item receives focus
+Duration:    200ms ease-out
+State after: Open
+```
+
+---
+
+## Acceptance Criteria
+
+Include with every spec or ticket. "Looks like the design" is not a criterion — make it testable.
+
+```
+Feature / Component: [Name]
+Done when:
+  ✓ All states implemented: default, hover, focus, active, disabled, loading, error, empty, success
+  ✓ Keyboard navigation works as documented
+  ✓ Screen reader announces component correctly
+  ✓ Responsive layout matches spec at sm / md / lg breakpoints
+  ✓ Animation timing matches motion spec
+  ✓ Tokens used in code match token names in spec
+  ✓ Edge cases handled: empty, overflow, error state, long strings
+  ✓ Passes color contrast AA (4.5:1 text, 3:1 UI)
+
+Out of scope: [Explicitly list what is NOT in this ticket]
+```
+
+---
+
+## Common Spec Failures
+
+| Mistake | Fix |
+|---------|-----|
+| Mobile design missing | Always link mobile frame alongside desktop |
+| Only happy state designed | Deliver all states or explicitly list missing ones |
+| Raw values instead of tokens | Reference token names — `--color-primary` not `#3B82F6` |
+| No edge case coverage | Add content rules: max chars, image ratios, item limits |
+| Behavior not annotated | Add interaction notes — not just spacing redlines |
+| No acceptance criteria | Define done: testable conditions, not visual match |
+
 
 ## Anti-Patterns
 

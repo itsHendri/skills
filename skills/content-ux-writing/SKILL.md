@@ -111,8 +111,22 @@ Post-completion:
   Body:     "You've reviewed everything. Check back tomorrow."
 ```
 
-### Confirmation Dialogs
-Be specific about what will happen — especially for destructive actions.
+### Confirmation Dialogs — Undo > Confirm
+
+Most confirmation dialogs are design failures. Users click through them mindlessly,
+which defeats their purpose. **Undo is almost always better:**
+
+```
+Pattern: Remove immediately → show undo toast → actually delete after toast expires
+Result:  Faster UX, same safety, no dialog friction
+```
+
+Use confirmation dialogs only for:
+- Truly irreversible actions (account deletion, data export, payment)
+- High-consequence batch operations ("Delete 47 items")
+- Actions where undo would be confusing or technically impossible
+
+When you must confirm, be specific:
 
 ```
 ✓ Title:   "Delete 'Q4 Campaign' project?"
@@ -125,8 +139,8 @@ Be specific about what will happen — especially for destructive actions.
   CTA:     "Yes" / "No"
 ```
 
-**Rule:** The destructive CTA should name what's being destroyed — "Delete project" not "Yes".
-The cancel CTA should preserve context — "Keep project" not "Cancel".
+**Rule:** The destructive CTA names what's being destroyed — "Delete project" not "Yes".
+The cancel CTA preserves context — "Keep project" not "Cancel".
 
 ### Loading & Progress Messages
 - Short: "Loading your projects..." not "Please wait while we retrieve your project data from the server"
@@ -178,6 +192,31 @@ When reviewing existing copy, ask:
 4. If something goes wrong, does the error tell the user what to do?
 5. Does this copy assume knowledge the user might not have?
 6. Is the tone appropriate to the emotional context (success vs. error vs. first use)?
+
+---
+
+## Writing for Translation
+
+If your product ships in multiple languages, copy decisions made in English affect
+every other language. Build translation-awareness in from the start.
+
+**Space allocation — German text is ~30% longer than English:**
+
+| Language | Expansion |
+|----------|-----------|
+| German | +30% |
+| French | +20% |
+| Finnish | +30–40% |
+| Chinese | –30% (fewer characters, same rendered width) |
+
+Design buttons, labels, and cards with the longest translation in mind — not the English version.
+
+**Writing patterns that survive translation:**
+- Keep numbers separate from strings: `"New messages: {count}"` not `"You have {count} new messages"` — word order varies by language
+- Use full sentences as single strings — don't split a sentence across two translation keys
+- Avoid abbreviations: `"5 minutes ago"` not `"5 mins ago"` — abbreviations rarely translate cleanly
+- Avoid idioms and metaphors that are English-specific
+- Give translators context about where each string appears — "Submit" means something different on a form vs. a legal document
 
 ---
 

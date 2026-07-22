@@ -234,7 +234,7 @@ components you'll have to rewrite. Specific inputs produce components you can sh
 Component:    [Name — matches the Figma component name exactly]
 Atomic level: [Atom / Molecule / Organism]
 Props:        [Name, type, default — e.g. intent: 'primary' | 'secondary' | 'ghost' | 'danger']
-States:       [All required: default, hover, focus, active, disabled, loading, error, empty]
+States:       [All required: default, hover, focus, active, disabled, loading, error, empty, success]
 Data:         [What real content does this render? Min / typical / max lengths]
 Tokens:       [Which design-system token classes does this use?]
 Responsive:   [Does it change at any breakpoint? How?]
@@ -270,3 +270,73 @@ A11y:         role="menu", aria-live for new notifications, Escape closes, focus
 - Direct DOM manipulation with `useRef` when state would work
 - `key={index}` in dynamic lists — causes subtle re-render bugs
 - Skipping accessible markup and planning to "add it later"
+
+---
+
+## Tailwind Constraints & Enforcement
+
+These rules apply to every component. They prevent the drift that makes a design system
+inconsistent over time.
+
+### Animation durations — use tokens, not arbitrary values
+```jsx
+// Wrong
+className="transition-all duration-[347ms]"
+
+// Right — use your defined token scale
+className="transition-all duration-150"  // fast: micro-interactions
+className="transition-all duration-200"  // normal: state changes
+className="transition-all duration-300"  // slow: entrances/exits
+```
+
+### Typography — enforce the scale
+```jsx
+// Wrong — arbitrary size
+className="text-[15px] font-[450]"
+
+// Right — use the defined scale
+className="text-sm font-medium"    // label
+className="text-base font-normal"  // body
+className="text-2xl font-semibold" // h2
+```
+
+### Spacing — 4px grid only
+```jsx
+// Wrong — breaks the grid
+className="p-[11px] mt-[7px]"
+
+// Right — multiples of 4
+className="p-3 mt-2"      // 12px, 8px
+className="p-4 mt-3"      // 16px, 12px
+className="p-6 mt-4"      // 24px, 16px
+```
+
+### Colors — tokens only, no raw values
+```jsx
+// Wrong
+className="bg-[#3B82F6] text-[#1A1A2E]"
+
+// Right
+className="bg-primary text-foreground"
+```
+
+### Interactive states — all four required
+Every interactive component needs all four states declared:
+```jsx
+className="
+  bg-surface              // default
+  hover:bg-surface-hover  // hover
+  focus-visible:ring-2    // focus
+  active:scale-[0.98]     // active
+  disabled:opacity-50 disabled:cursor-not-allowed  // disabled
+"
+```
+
+### Component completeness checklist
+Before shipping any component:
+- [ ] All interactive states (hover, focus, active, disabled, loading, error)
+- [ ] Works at minimum content (empty string, zero items, no image)
+- [ ] Works at maximum content (very long strings, 100+ items)
+- [ ] Responsive — tested at sm/md/lg
+- [ ] Tokens only — no raw hex, no arbitrary px values
+- [ ] `prefers-reduced-motion` respected in any animation

@@ -175,6 +175,37 @@ Rules:
 
 ---
 
+---
+
+## Token Pipeline (Figma → Code)
+
+Once your token architecture is defined, this is how it flows into production:
+
+```
+Figma Variables
+  → Export as JSON (Tokens Studio plugin / Figma Variables API)
+    → Transform (Style Dictionary / Token Transformer)
+      → Platform outputs:
+          CSS custom properties  (web)
+          Tailwind config        (React/Next.js)
+          iOS Swift constants    (native iOS)
+          Android XML resources  (native Android)
+```
+
+**Always reference tokens by name — never raw values in handoff or code:**
+
+```
+Wrong:  Background: #3B82F6  |  Padding: 16px  |  Radius: 8px
+Right:  Background: --color-primary  |  Padding: --space-4 (16px)  |  Radius: --radius-md (8px)
+```
+
+**Token governance rules:**
+- Token changes propagate everywhere — treat them like a public API
+- Dark mode: only redefine semantic tokens, never primitives
+- Alpha (`rgba`, `hsla`) is a design smell — define explicit overlay colors instead
+- Never use primitive tokens directly in components — always go through semantic layer
+
+
 ## Anti-Patterns
 
 - Using raw hex values or pixel numbers directly in components
