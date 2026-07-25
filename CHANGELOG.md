@@ -3,6 +3,16 @@
 All notable changes to this skill system. Format based on
 [Keep a Changelog](https://keepachangelog.com/); versioning is SemVer.
 
+## [Unreleased]
+
+### Added
+- `wireframe` — rapid layout/navigation design through inline HTML wireframe iterations
+  rendered directly in conversation: ground in the product's real design tokens, diagnose
+  the current structure with code evidence, research patterns (Mobbin/web) with citations,
+  iterate ~5 distinct concepts per batch with honest costs, lock decisions explicitly, and
+  save a living `wireframes.html` + decision-record pair in the project repo before any
+  build. Extracted from the Shhhcribble Studio redesign sessions (2026-07-24/25).
+
 ## [0.2.0] — 2026-07-22
 
 Consolidates three diverging copies (the published blog snapshot, desktop `.skill` bundles,

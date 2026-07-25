@@ -3,7 +3,7 @@
 A modular skill system: focused files that load expert-level guidance exactly when a task
 needs it, without dragging irrelevant context into every session.
 
-Currently 14 design, UX, and frontend skills. Process and other domains are in progress.
+Currently 15 design, UX, and frontend skills. Process and other domains are in progress.
 
 This repo is the **single source of truth**. Any copy elsewhere — a local `.claude/skills`
 directory, a Claude project, a blog write-up — is a snapshot of this.
@@ -21,15 +21,16 @@ you don't need to name it. The `description` frontmatter in each `SKILL.md` list
 that triggers it, so you can see which fires for a given task and deliberately invoke more than
 one when a task spans domains.
 
-## The 14 skills
+## The 15 skills
 
-### Core UX (10)
+### Core UX (11)
 
 | Skill | What it owns |
 |---|---|
 | [`ux-foundations`](skills/ux-foundations/SKILL.md) | Base layer, always active. Shared mental models, heuristics, decision frameworks. |
 | [`design-systems`](skills/design-systems/SKILL.md) | Component libraries and tokens — Atomic Design, three-tier architecture, variant logic, governance, the token pipeline. |
 | [`ux-flows`](skills/ux-flows/SKILL.md) | Flows, IA, navigation, screen-to-screen logic, and full state management. |
+| [`wireframe`](skills/wireframe/SKILL.md) | Rapid layout iteration as inline HTML wireframes — diagnose, iterate ~5 concepts, lock decisions, save a living wireframe pair before building. |
 | [`visual-ui`](skills/visual-ui/SKILL.md) | Layout, colour, typography, spacing, dark mode — distinctive production-grade visuals. |
 | [`motion-design`](skills/motion-design/SKILL.md) | Animation principles, motion tokens, easing, per-component timing. |
 | [`content-ux-writing`](skills/content-ux-writing/SKILL.md) | Every word in the interface — labels, errors, empty states, voice and tone. |
@@ -51,6 +52,7 @@ one when a task spans domains.
 
 - **Design a new component** — `ux-foundations` → `design-systems` → `visual-ui` → `accessibility`
 - **Build it in code** — `design-systems` → `design-to-react` → `technical-design`
+- **Get the layout right before building** — `ux-flows` → `wireframe` → `visual-ui`
 - **Ship a feature end-to-end** — `ux-flows` → `prototyping` → `content-ux-writing` → `design-communication`
 - **Get team alignment** — `design-research-synthesis` → `design-communication`
 - **Push back on a feasibility concern** — `technical-design` → `design-communication`
