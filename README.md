@@ -3,7 +3,7 @@
 A modular skill system: focused files that load expert-level guidance exactly when a task
 needs it, without dragging irrelevant context into every session.
 
-Currently 15 design, UX, and frontend skills. Process and other domains are in progress.
+Currently 16 design, UX, and frontend skills. Process and other domains are in progress.
 
 This repo is the **single source of truth**. Any copy elsewhere — a local `.claude/skills`
 directory, a Claude project, a blog write-up — is a snapshot of this.
@@ -21,15 +21,15 @@ you don't need to name it. The `description` frontmatter in each `SKILL.md` list
 that triggers it, so you can see which fires for a given task and deliberately invoke more than
 one when a task spans domains.
 
-## The 15 skills
+## The 16 skills
 
-### Core UX (11)
+### Core UX (12)
 
 | Skill | What it owns |
 |---|---|
 | [`ux-foundations`](skills/ux-foundations/SKILL.md) | Base layer, always active. Shared mental models, heuristics, decision frameworks. |
 | [`design-systems`](skills/design-systems/SKILL.md) | Component libraries and tokens — Atomic Design, three-tier architecture, variant logic, governance, the token pipeline. |
-| [`ux-flows`](skills/ux-flows/SKILL.md) | Flows, IA, navigation, screen-to-screen logic, and full state management. |
+| [`ux-flows`](skills/ux-flows/SKILL.md) | Flows, IA, navigation, screen-to-screen logic, and full state management. Plus an appendix for publishing a finished flow to an infinite canvas as an engineer-ready handoff board. |
 | [`wireframe`](skills/wireframe/SKILL.md) | Rapid layout iteration as inline HTML wireframes — diagnose, iterate ~5 concepts, lock decisions, save a living wireframe pair before building. |
 | [`visual-ui`](skills/visual-ui/SKILL.md) | Layout, colour, typography, spacing, dark mode — distinctive production-grade visuals. |
 | [`motion-design`](skills/motion-design/SKILL.md) | Animation principles, motion tokens, easing, per-component timing. |
@@ -38,6 +38,7 @@ one when a task spans domains.
 | [`prototyping`](skills/prototyping/SKILL.md) | Figma craft, fidelity decisions, Dev Mode prep, asset export, prototype strategy. |
 | [`ui-audit`](skills/ui-audit/SKILL.md) | Reviewing and critiquing *existing* UI — six lenses, prioritised findings. |
 | [`design-context`](skills/design-context/SKILL.md) | Cross-session consistency — load a context block at the start of a design session. |
+| [`doc-acceptance-test`](skills/doc-acceptance-test/SKILL.md) | Testing documentation an *agent* must build from — isolate a fresh agent, make it build something real, harvest a critique of the docs. |
 
 ### Designer-Developer (4)
 
@@ -53,7 +54,9 @@ one when a task spans domains.
 - **Design a new component** — `ux-foundations` → `design-systems` → `visual-ui` → `accessibility`
 - **Build it in code** — `design-systems` → `design-to-react` → `technical-design`
 - **Get the layout right before building** — `ux-flows` → `wireframe` → `visual-ui`
+- **Ship a system others build from** — `design-systems` → `design-communication` → `doc-acceptance-test`
 - **Ship a feature end-to-end** — `ux-flows` → `prototyping` → `content-ux-writing` → `design-communication`
+- **Hand a flow to engineering on a board** — `ux-flows` (design the flow, then its canvas appendix) → `design-communication` for the spec content the cards carry
 - **Get team alignment** — `design-research-synthesis` → `design-communication`
 - **Push back on a feasibility concern** — `technical-design` → `design-communication`
 - **Audit existing UI** — `ui-audit` (runs its own lenses; pull in `accessibility` or `visual-ui` for depth)
