@@ -44,7 +44,7 @@ common research mistake. The insight step is where the real thinking happens.
 ```
 
 ### Step 2: Affinity mapping (find patterns)
-Group observations by theme. Do this physically or digitally (FigJam, Miro):
+Group observations by theme. Do this physically or digitally (FigJam, or any infinite canvas):
 - Write each observation on a sticky note
 - Sort into groups without predefined categories
 - Name the groups after the pattern, not the feature

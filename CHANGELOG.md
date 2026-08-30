@@ -6,6 +6,29 @@ All notable changes to this skill system. Format based on
 ## [Unreleased]
 
 ### Added
+- `client-update` — the one-page artifact a client reads after work lands on staging. Two content
+  sections and never a third: **Test**, actions with an expected result, and **Updates**, visible
+  changes needing no action. It is deliberately not a changelog and not a status report — the
+  reader has a minute, needs to know what to click, and is not the person who did the work.
+  The rest of the skill is the identity: a hairline masthead so the page reads as an *issued*
+  document rather than a message, and a stacked sign-off whose reasoning is recorded rather than
+  asserted — a wordmark sharing a baseline with text sets cap height against x-height, and no size
+  makes that look deliberate.
+
+- `framer-marketplace` — the loop from a finished Framer component to a Marketplace listing:
+  the pre-submission hardening sweep, listing screenshots, a recorded interaction loop, and the
+  listing copy. Most of its value is the trap table, because every step here fails *silently* —
+  the artifacts look plausible and are wrong. A dead preview server records Chrome's error page
+  as a structurally perfect animation of nothing; identical md5s across a shot set mean the state
+  params never applied; `--virtual-time-budget` fast-forwards timers but not the network, so a
+  cold cache loses the imagery; a debug cursor left on leaks into a listing image. Each has a
+  named guard. Ships two tools that need nothing installed: a recorder driving Chrome's DevTools
+  protocol (`Page.captureScreenshot` polled on a clock — `startScreencast` yields one frame and
+  stops in headless, whatever the throttling flags say) and an H.264 encoder built on
+  AVFoundation, since there is no ffmpeg and `avconvert` cannot build video from stills.
+  Extracted from four component builds; the accessibility item at the top of its preflight —
+  *can a keyboard reach the link?* — comes from shipping a component where it could not.
+
 - `doc-acceptance-test` — a method for validating documentation whose reader is a model rather
   than a person. Reading such docs only tells you whether they are clear to you; the question is
   what a model with no other context produces from them, and the failures are not where you would

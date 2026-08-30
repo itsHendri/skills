@@ -2,11 +2,15 @@
 name: ux-flows
 description: >
   Expert skill for designing user flows, interaction models, navigation structures, and
-  information architecture. Use when the user asks about: user flows, task flows, navigation
+  information architecture — and for publishing a finished flow onto an infinite canvas as a
+  handoff artifact. Use when the user asks about: user flows, task flows, navigation
   design, onboarding flows, information architecture, sitemaps, screen-to-screen logic,
   decision trees, app structure, multi-step forms, or how users move through a product.
   Also triggers for: login/signup flows, checkout flows, empty states, error flows,
   onboarding sequences, and any question about "how a user gets from A to B."
+  The canvas half triggers for: flow map, flow diagram, put this on a board, whiteboard,
+  infinite canvas, FigJam, swimlanes, spec card, screen-by-screen handoff, or
+  "document this flow for engineering."
 ---
 
 # UX Flows & Interaction Design
@@ -182,3 +186,175 @@ Document flows as:
 - Error messages that say what went wrong but not how to fix it
 - Navigation items that can't tell users where they are (no active state)
 - Onboarding that asks for all information upfront instead of progressively
+
+---
+---
+
+# Appendix — Publishing a flow to an infinite canvas
+
+Everything above is about *designing* a flow. This appendix is about *publishing* a finished one
+onto an infinite canvas (FigJam, or any board that can hold images, text and connectors) as an
+artifact an engineer can build from
+without a sync call.
+
+Load this half only when the task is publishing. Two boundaries:
+
+- **`wireframe`** deliberately says *don't* push to external design tools unless asked. This is the
+  case where the user has asked.
+- **`design-communication`** owns spec *content* — its spec template and acceptance criteria are the
+  source of truth for what a spec says. This appendix owns only how a spec is *rendered on a board*.
+
+## Decide the track first
+
+Two different jobs get called "a flow map". Pick one deliberately; mixing them is the most common
+way these boards go wrong.
+
+| Track | Goal | Screens are… | Deliverable |
+|---|---|---|---|
+| **Design hand-off** | build the real thing | componentised, real design-system instances | an editable design file |
+| **Flow documentation** | share fast, hand to engineering | raw captures of a running build | a connected board |
+
+For documentation, rebuilding screens is overhead *and* introduces drift — the map should show
+exactly what ships. Capture the running build and skip the rebuild.
+
+## The canvas-independent flow model
+
+Model the flow before touching any tool. Everything below maps onto every canvas.
+
+| Element | Role |
+|---|---|
+| **Screen node** | one captured state, named `NN · Screen name` so order survives sorting |
+| **Decision node** | a real fork, with the condition written *on* the node |
+| **Lane** | a titled phase grouping consecutive screens |
+| **Edge** | a transition, carrying one semantic role (below) |
+| **Hotspot** | a marker on the exact control that triggers an edge |
+| **Panel** | framed context: title, entry points, legend, divergences |
+| **Spec card** | the per-screen handoff detail, placed under its screen |
+
+## Semantic edge roles
+
+Define roles by *meaning*, then bind each to a colour from the project's own tokens. Read the
+project's token source first (theme file, CSS variables, design-system doc) and never use the canvas
+tool's default swatches when the project has a palette — a board in stock colours reads as a
+different product.
+
+| Role | Line | Means |
+|---|---|---|
+| **Main path** | solid | the primary route through the flow |
+| **Variation / sub-flow** | dashed | an alternative route to the same outcome |
+| **Opens a modal layer** | dashed | a sheet or picker on top of the current screen |
+| **State / reference** | dashed, muted | an error/empty/loading example of a screen |
+| **Risk** | solid, alert | a destructive or irreversible path |
+| **Decision** | — | fill for the fork node itself |
+
+Keep a **visual legend** built from real marks — actual short connectors, a real fork node, a real
+hotspot dot — not text descriptions. A legend drawn any other way drifts from the canvas.
+
+## Layout system
+
+- **Context cluster, top-left, before the flow starts:** title + one-line subtitle (what was
+  captured, from where) · entry points and their routing conditions · the visual legend ·
+  divergences. Put divergences *here*, not at the bottom where nobody scrolls.
+- **Horizontal rail**, left to right, at a generous column pitch so connector gutters stay clear.
+- **Phase lanes** wrapping consecutive screens: a saturated title bar over a light-tint body,
+  uniform height.
+- **Spec card directly beneath its screen**, narrower than the column pitch.
+- **Sub-flow band** below the cards: variations, modal layers and states, each under its parent
+  column, linked from a hotspot on the triggering control.
+
+## Spec card
+
+The board renders it; `design-communication` defines what a spec says. Render as a rounded rect with
+rich text — bold title, bold field labels, regular values — not a sticky note, which caps at a size
+that forces you to cut detail.
+
+Beyond the standard spec fields, a flow board needs four of its own:
+
+- **Branches** — where each action goes, with its condition
+- **Edge cases** — error, empty, loading, skip, back
+- **Actor** — user · system · external (which third party)
+- **Hotspot** — which on-screen control triggers each outgoing edge
+
+Write unknowns as **"TBD — confirm with eng"**, never blank. A blank field reads as "nothing
+required"; an explicit TBD is a visible question. Values that can only come from the running system
+(analytics event names, endpoints) should be **sourced from the codebase** where the build is
+available, not invented.
+
+## Capture pipeline
+
+1. **Capture from the highest-fidelity real build.** A web fallback for a native app, or a
+   componentised rebuild, both drift from what ships.
+2. **Add a capture seed** — a dev-only deep link or route parameter that jumps straight to any
+   state with realistic data. Without one, state-machine flows have no addressable steps and every
+   re-capture is manual. This is the difference between a board you update and a board you abandon.
+3. **Pre-grant OS permissions** before capturing, or a system dialog lands in the middle of your
+   screenshots.
+4. **Name each file after its screen.** On most canvases the filename becomes the layer name, which
+   is what keeps screen-to-image mapping correct at scale.
+5. **On change, re-capture and swap the fill.** Connectors, lanes and cards stay. Never rebuild the
+   board for a visual change.
+
+A capture succeeding means the screen *rendered*, not that it rendered *correctly* — a screen with
+no data behind it still produces a valid image of an empty state. Verify against the build's logs.
+
+## Canvas adapters
+
+Write the flow model first, adapt to the tool second. Canvas automation comes in two shapes, and
+which one you have changes the order you build in:
+
+| | **Imperative** — script node by node | **Declarative** — submit a spec |
+|---|---|---|
+| **Construction** | create each node, set its properties | describe all items in one payload |
+| **Order** | create, then connect by node id | items first, connectors last, by alias |
+| **Failure mode** | partial builds if a step throws mid-script | whole payload rejected on one bad line |
+| **Discovery** | check which node types the editor mode allows | fetch the spec format before writing any |
+
+FigJam is the imperative case and the one verified here. Its specifics:
+
+- **Node types are editor-scoped.** Connectors, sections and shape-with-text exist in whiteboard
+  mode but not the design editor of the same tool. Confirm from the file URL which editor you are in
+  before assuming an API exists.
+- **Direct image creation from a URL is unavailable.** The working path is upload → asset handle →
+  shape with an image fill.
+- **Upload filenames become layer names**, so name files `NN Screen name` before uploading and the
+  board arrives pre-ordered.
+- **Screenshots render a node in isolation.** A background rectangle with text as a *sibling*
+  screenshots as an empty rectangle. Build panels and cards as frames containing their own text, and
+  they become verifiable in one call.
+
+For any other canvas — declarative or custom — the model maps to any renderer that supports
+positioned images, text, filled shapes and polylines. Export the flow model as data and render it;
+the value is in the model, not the tool.
+
+## Routing
+
+- **Explicit side magnets, never auto.** Auto-routing draws lines straight across screen bodies.
+  Anchor the source to the side facing a clear gutter and the target to the edge facing it.
+- **Elbowed connectors**, arrow end-cap.
+- **Crossing lines mean the layout is fighting the flow.** Re-order the rail; don't re-route the
+  line.
+
+## Completeness checklist
+
+A board is engineer-ready when:
+
+- [ ] Every screen has purpose, fields, validation, data-out, branches, edge cases
+- [ ] Every decision node states its condition explicitly
+- [ ] Every branch has a destination *and* a condition
+- [ ] Entry and exit points are marked, including re-entry after abandon
+- [ ] Every external dependency is attributed to an actor
+- [ ] Unknowns say "TBD — confirm with eng" rather than sitting blank
+- [ ] No connector crosses another
+- [ ] The legend matches the marks actually used on the canvas
+
+## Anti-patterns
+
+- Putting every variation on the main rail — the single biggest cause of unreadable boards. Main
+  path is the spine; variations go in the sub-flow band or their own board.
+- Auto-routing connectors and accepting lines across screens.
+- Sticky notes for specs, then cutting detail to fit them.
+- A text-described legend that no longer matches the canvas.
+- Rebuilding screens for a documentation board, then presenting the rebuild as what ships.
+- Screenshotting the flow at a fidelity that hides the real design system.
+- No capture seed, so the board is a one-off that rots on the next design change.
+- Divergences from production buried at the bottom of the board.

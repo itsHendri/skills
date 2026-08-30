@@ -3,7 +3,7 @@
 A modular skill system: focused files that load expert-level guidance exactly when a task
 needs it, without dragging irrelevant context into every session.
 
-Currently 16 design, UX, and frontend skills. Process and other domains are in progress.
+Currently 18 design, UX, frontend and shipping skills. Process and other domains are in progress.
 
 This repo is the **single source of truth**. Any copy elsewhere — a local `.claude/skills`
 directory, a Claude project, a blog write-up — is a snapshot of this.
@@ -21,7 +21,7 @@ you don't need to name it. The `description` frontmatter in each `SKILL.md` list
 that triggers it, so you can see which fires for a given task and deliberately invoke more than
 one when a task spans domains.
 
-## The 16 skills
+## The 18 skills
 
 ### Core UX (12)
 
@@ -49,6 +49,13 @@ one when a task spans domains.
 | [`technical-design`](skills/technical-design/SKILL.md) | The CSS and implementation knowledge that makes designs buildable and performant. |
 | [`design-research-synthesis`](skills/design-research-synthesis/SKILL.md) | Research and analytics into prioritised design recommendations. |
 
+### Shipping (2)
+
+| Skill | What it owns |
+|---|---|
+| [`framer-marketplace`](skills/framer-marketplace/SKILL.md) | Taking a Framer component from "it works" to listed — the pre-submission sweep, listing screenshots, a recorded interaction loop, and the copy. Carries the capture recipes and the traps that silently produce broken assets. |
+| [`client-update`](skills/client-update/SKILL.md) | The one-page artifact a client reads after work lands on staging: what to test, what simply changed, and nothing else. Carries the studio identity, so the updates accumulate as a run of issued documents. |
+
 ## How the skills work together
 
 - **Design a new component** — `ux-foundations` → `design-systems` → `visual-ui` → `accessibility`
@@ -61,6 +68,8 @@ one when a task spans domains.
 - **Push back on a feasibility concern** — `technical-design` → `design-communication`
 - **Audit existing UI** — `ui-audit` (runs its own lenses; pull in `accessibility` or `visual-ui` for depth)
 - **Keep work consistent across sessions** — `design-context`, loaded once at session start
+- **Ship a component to the Framer Marketplace** — `ui-audit` (fix P0/P1 first) → `framer-marketplace` → `content-ux-writing` for the listing copy
+- **Hand finished work to a client for review** — `client-update` → `content-ux-writing` if the test steps need tightening
 
 ## What's inside every skill file
 
