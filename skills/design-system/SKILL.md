@@ -4,7 +4,7 @@ description: >
   Build, document and govern a design system on one naming scheme — three layers
   (background, card, foreground), hover and pressed on every colour that acts, one inactive
   set, a primary/secondary/tertiary hierarchy, brand in three levels — with Atomic Design
-  for components and Codename reading it all natively. Use when the user mentions: design
+  for components. Use when the user mentions: design
   system, design tokens, variables, component library, pattern library, UI kit, style guide,
   atomic design, atoms/molecules/organisms, Storybook, dark mode setup, or asks to create,
   audit or extend a component. Apply whenever building reusable UI, even if the words are
@@ -67,11 +67,11 @@ the system preference as the fallback. Never a second set of classes.
 3. Put the block from `references/CONTEXT.md` into the project's `CLAUDE.md`
    (or AGENTS.md), filled in with the components that exist, so every later
    session lands on the same names.
-4. Check the result in Codename: the Variables tab lists exactly these names
-   grouped by what they hold, the Critique measures contrast on foreground
-   over background and over card, and the Dark switch finds the hook and shows
-   the real dark mode. If the tab shows a variable under "other", its value is
-   not something the scheme names.
+4. Check the result in the browser: every colour on the page resolves to one
+   of these names, foreground passes contrast on both background and card, and
+   setting the dark hook on `<html>` repaints the page with no other change.
+   A tool that reads a page's variables should list exactly these names,
+   grouped by what they hold.
 
 ## 3. Components: Atomic Design
 
@@ -147,19 +147,19 @@ component exists, not only how to use it.
 - Dark mode redefines the named variables only, never the primitives that
   generated them. Alpha is a smell: define an explicit overlay colour instead.
 - Hand-off names variables, never values: *"Background: `--card`, padding
-  `--space-4`, radius `--radius`"*, not *"#fff, 16px, 8px"*. This is also how
-  Codename's brief reads.
+  `--space-4`, radius `--radius`"*, not *"#fff, 16px, 8px"*.
 
 ## 6. Token pipeline
 
 ```
-Palette (Figma variables or Codename's seeds and ramps)
+Palette (Figma variables, or ramps generated from a few seed colours)
   → the named variables, light and dark (tokens.css)
     → Tailwind @theme (tailwind.css) · CSS custom properties · native constants
 ```
 
-Codename generates a `tokens.css`, `tokens.json` (W3C DTCG) and a style guide
-from a page; when the page is on this scheme, the names round-trip.
+Exchange formats such as W3C design tokens (DTCG JSON) carry the names as
+they are; a tool that reads or writes them should round-trip the scheme
+without renaming anything.
 
 ## 7. Anti-patterns
 

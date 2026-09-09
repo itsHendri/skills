@@ -83,10 +83,10 @@ because text sits on them.
 --shadow-card  --shadow-overlay
 ```
 
-The words matter to the plugin: Codename reads `space`, `radius` and `text-`
-in a name to know what kind of length a variable holds, so a grid change in
-Variables moves them and the edit card offers `var(--space-2)` beside an 8px
-padding.
+The words matter beyond taste: tools that read a page's variables tell what
+kind of length one holds from its name, and `space`, `radius` and `text-` are
+the words they agree on. A bare `--gap` or `--size-2` says nothing about
+whether it is a gap or a font size.
 
 ## Dark mode
 
@@ -94,8 +94,8 @@ Light values on `:root`. Dark values under both hooks a project might set —
 `:root.dark` is what next-themes, shadcn/ui and Tailwind's manual variant
 use; `:root[data-theme="dark"]` is what Bootstrap, Pico and most vendor
 design systems use — with the system preference as the fallback when neither
-is set. Codename's Dark switch finds either hook and shows the real dark mode
-without any browser permission.
+is set. A theme switcher sets one attribute or one class; nothing else on the
+page changes.
 
 ```css
 :root { /* light */ }

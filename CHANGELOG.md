@@ -16,7 +16,8 @@ All notable changes to this skill system. Format based on
   Atomic Design, the component contract, the Carbon documentation template and governance stay,
   with states aligned to the scheme. Ships `references/NAMING.md`, a starter `tokens.css`, a
   Tailwind v4 mapping so utilities read as the names do, and a context block for a project's
-  CLAUDE.md. Designed alongside the Codename extension, which reads the scheme natively.
+  CLAUDE.md. Tool-agnostic by design: the names are the contract, and anything that reads CSS
+  variables reads them as they are.
 
 ### Added
 - `client-update` — the one-page artifact a client reads after work lands on staging. Two content
