@@ -5,6 +5,19 @@ All notable changes to this skill system. Format based on
 
 ## [Unreleased]
 
+### Changed
+- `design-systems` became `design-system`, and gained the naming scheme it was missing. The old
+  skill taught a three-tier token architecture with generic names (`--color-primary`,
+  `--color-surface`); the new one names a variable for what it is for, how much weight it
+  carries and when it applies — `--card-hover`, `--foreground-tertiary`, `--brand-secondary-pressed`
+  — on three layers (background, card, foreground), with hover and pressed on anything that acts,
+  one inactive set for anything switched off, and dark values under both hooks a project might
+  set. Component tokens are gone: a component's decision is a level or a state, not a new role.
+  Atomic Design, the component contract, the Carbon documentation template and governance stay,
+  with states aligned to the scheme. Ships `references/NAMING.md`, a starter `tokens.css`, a
+  Tailwind v4 mapping so utilities read as the names do, and a context block for a project's
+  CLAUDE.md. Designed alongside the Codename extension, which reads the scheme natively.
+
 ### Added
 - `client-update` — the one-page artifact a client reads after work lands on staging. Two content
   sections and never a third: **Test**, actions with an expected result, and **Updates**, visible

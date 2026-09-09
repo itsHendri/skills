@@ -28,7 +28,7 @@ one when a task spans domains.
 | Skill | What it owns |
 |---|---|
 | [`ux-foundations`](skills/ux-foundations/SKILL.md) | Base layer, always active. Shared mental models, heuristics, decision frameworks. |
-| [`design-systems`](skills/design-systems/SKILL.md) | Component libraries and tokens — Atomic Design, three-tier architecture, variant logic, governance, the token pipeline. |
+| [`design-system`](skills/design-system/SKILL.md) | One naming scheme for a project's variables — three layers, states on every colour that acts, one inactive set, a primary/secondary/tertiary hierarchy — plus Atomic Design, the component contract, governance and the token pipeline. Built to be read natively by the Codename extension. |
 | [`ux-flows`](skills/ux-flows/SKILL.md) | Flows, IA, navigation, screen-to-screen logic, and full state management. Plus an appendix for publishing a finished flow to an infinite canvas as an engineer-ready handoff board. |
 | [`wireframe`](skills/wireframe/SKILL.md) | Rapid layout iteration as inline HTML wireframes — diagnose, iterate ~5 concepts, lock decisions, save a living wireframe pair before building. |
 | [`visual-ui`](skills/visual-ui/SKILL.md) | Layout, colour, typography, spacing, dark mode — distinctive production-grade visuals. |

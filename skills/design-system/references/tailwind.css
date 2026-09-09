@@ -1,0 +1,98 @@
+/*
+ * Tailwind v4 on the scheme. Import the tokens, then map them into
+ * Tailwind's namespaces so the utilities read as the names do:
+ *
+ *   bg-background   bg-card hover:bg-card-hover active:bg-card-pressed
+ *   text-foreground text-foreground-secondary   border-stroke
+ *   bg-brand text-brand-foreground hover:bg-brand-hover active:bg-brand-pressed
+ *   disabled:bg-inactive disabled:text-inactive-foreground
+ *   focus-visible:ring-2 focus-visible:ring-focus
+ *   p-4 gap-2 rounded-md text-base shadow-card
+ *
+ * `inline` makes the utilities resolve to the variables at use, so a dark
+ * hook that redefines --card repaints bg-card without a second class.
+ */
+
+@import 'tailwindcss';
+@import './tokens.css';
+
+@theme inline {
+  /* layers */
+  --color-background: var(--background);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-card-pressed: var(--card-pressed);
+  --color-card-secondary: var(--card-secondary);
+  --color-foreground: var(--foreground);
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-foreground-tertiary: var(--foreground-tertiary);
+  --color-stroke: var(--stroke);
+  --color-stroke-secondary: var(--stroke-secondary);
+
+  /* inactive */
+  --color-inactive: var(--inactive);
+  --color-inactive-foreground: var(--inactive-foreground);
+
+  /* brand */
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-pressed: var(--brand-pressed);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-secondary-hover: var(--brand-secondary-hover);
+  --color-brand-secondary-pressed: var(--brand-secondary-pressed);
+  --color-brand-secondary-foreground: var(--brand-secondary-foreground);
+  --color-brand-tertiary: var(--brand-tertiary);
+  --color-brand-tertiary-hover: var(--brand-tertiary-hover);
+  --color-brand-tertiary-pressed: var(--brand-tertiary-pressed);
+  --color-brand-tertiary-foreground: var(--brand-tertiary-foreground);
+
+  /* status */
+  --color-success: var(--success);
+  --color-success-hover: var(--success-hover);
+  --color-success-pressed: var(--success-pressed);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-hover: var(--warning-hover);
+  --color-warning-pressed: var(--warning-pressed);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-danger: var(--danger);
+  --color-danger-hover: var(--danger-hover);
+  --color-danger-pressed: var(--danger-pressed);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-info: var(--info);
+  --color-info-hover: var(--info-hover);
+  --color-info-pressed: var(--info-pressed);
+  --color-info-foreground: var(--info-foreground);
+  --color-focus: var(--focus);
+
+  /* rhythm and shape */
+  --spacing-1: var(--space-1);
+  --spacing-2: var(--space-2);
+  --spacing-3: var(--space-3);
+  --spacing-4: var(--space-4);
+  --spacing-5: var(--space-5);
+  --spacing-6: var(--space-6);
+  --spacing-7: var(--space-7);
+  --spacing-8: var(--space-8);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius-lg);
+  --radius-full: var(--radius-full);
+
+  /* type */
+  --text-sm: var(--text-sm);
+  --text-base: var(--text-base);
+  --text-lg: var(--text-lg);
+  --text-xl: var(--text-xl);
+  --text-2xl: var(--text-2xl);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  /* elevation */
+  --shadow-card: var(--shadow-card);
+  --shadow-overlay: var(--shadow-overlay);
+}
+
+/* Tailwind's dark variant, for the rare rule the variables cannot carry. */
+@custom-variant dark (&:where(.dark, .dark *, [data-theme='dark'], [data-theme='dark'] *));
