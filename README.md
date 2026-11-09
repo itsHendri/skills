@@ -3,7 +3,7 @@
 A modular skill system: focused files that load expert-level guidance exactly when a task
 needs it, without dragging irrelevant context into every session.
 
-Currently 20 skills in five groups (core, design, web, 3d-print, video), so a machine installs only the workflows it needs.
+Currently 22 skills in five groups (core, design, web, 3d-print, video), so a machine installs only the workflows it needs.
 
 This repo is the **single source of truth**. Any copy elsewhere — a local `.claude/skills`
 directory, a Claude project, a blog write-up — is a snapshot of this.
@@ -58,9 +58,12 @@ one when a task spans domains.
 | [`client-update`](skills/web/client-update/SKILL.md) | The one-page artifact a client reads after work lands on staging: what to test, what simply changed, and nothing else. Carries the studio identity, so the updates accumulate as a run of issued documents. |
 | [`codename`](skills/web/codename/SKILL.md) | Working with the Codename Chrome panel: it reads the design system a live page runs, lets a person edit it, and hands the change to the agent at token level over a local MCP bridge. |
 
-### 3d-print: Blender and 3D printing (0)
+### 3d-print: Blender and 3D printing (2)
 
-Moving in from the Blender projects.
+| Skill | What it owns |
+|---|---|
+| [`blender-workflow`](skills/3d-print/blender-workflow/SKILL.md) | Running Blender for someone with no 3D experience: the MCP connection or headless scripts, parametric builds with every dimension in one place, scene hygiene, preview renders. |
+| [`3d-print-design`](skills/3d-print/3d-print-design/SKILL.md) | FDM design rules (watertight geometry, clearances, overhangs, minimum features), the checks before calling a model done, headless slicing with Bambu Studio, and handing a print to someone else. |
 
 ### video: Video (0)
 

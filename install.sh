@@ -55,7 +55,9 @@ prune() { # target_dir: remove our links whose skill no longer exists
 }
 
 install_groups() {
+	# Adds to what's installed already (the state file), so ./install.sh 3d-print keeps design and web.
 	local wanted="core" g
+	if [ -f "$STATE" ]; then for g in $(cat "$STATE"); do has_group "$g" && ! contains "$wanted" "$g" && wanted="$wanted $g"; done; fi
 	for g in "$@"; do
 		has_group "$g" || { warn "no group \"$g\" (groups: $(groups | tr '\n' ' '))"; exit 1; }
 		[ "$g" = web ] && ! contains "$wanted" design && wanted="$wanted design"

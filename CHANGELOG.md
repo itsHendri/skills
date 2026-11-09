@@ -6,12 +6,14 @@ All notable changes to this skill system. Format based on
 ## [Unreleased]
 
 ### Changed
+- `./install.sh <group>` adds to the groups already installed instead of replacing them.
 - Skills are grouped by workflow: `skills/core/`, `skills/design/`, `skills/web/`, `skills/3d-print/`, `skills/video/`. Links in the README follow; anyone linking to `skills/<name>/` needs `skills/<group>/<name>/`.
 - `install.sh` replaces the single symlink: it links each skill of the chosen groups into `~/.claude/skills` and `~/.agents/skills`, so Codex, Cursor and other Agent Skills tools see them too, and tools that write into their skills folder no longer write into this repo. It also checks the skills against the spec and zips them for web uploads.
 - `framer-marketplace`'s description trimmed to 945 characters (the spec allows 1024).
 
 ### Added
 - `codename` and `design-canvas` skills.
+- `3d-print` group: `blender-workflow` and `3d-print-design`, moved in from the Blender workspace. The owner's own printer and filaments stay in that workspace's CLAUDE.md; the skill reads them from there.
 - `global/AGENTS.md`: working preferences every session loads, wired up by `install.sh`.
 - `vendor.md`: the third-party skills and how to reinstall them.
 
