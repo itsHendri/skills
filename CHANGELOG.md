@@ -6,6 +6,21 @@ All notable changes to this skill system. Format based on
 ## [Unreleased]
 
 ### Changed
+- Skills are grouped by workflow: `skills/core/`, `skills/design/`, `skills/web/`, `skills/3d-print/`, `skills/video/`. Links in the README follow; anyone linking to `skills/<name>/` needs `skills/<group>/<name>/`.
+- `install.sh` replaces the single symlink: it links each skill of the chosen groups into `~/.claude/skills` and `~/.agents/skills`, so Codex, Cursor and other Agent Skills tools see them too, and tools that write into their skills folder no longer write into this repo. It also checks the skills against the spec and zips them for web uploads.
+- `framer-marketplace`'s description trimmed to 945 characters (the spec allows 1024).
+
+### Added
+- `codename` and `design-canvas` skills.
+- `global/AGENTS.md`: working preferences every session loads, wired up by `install.sh`.
+- `vendor.md`: the third-party skills and how to reinstall them.
+
+### Removed
+- `wireframe` (retired 2026-11-06; `design-canvas` covers layout rounds now).
+
+## Earlier, unreleased
+
+### Changed
 - `design-systems` became `design-system`, and gained the naming scheme it was missing. The old
   skill taught a three-tier token architecture with generic names (`--color-primary`,
   `--color-surface`); the new one names a variable for what it is for, how much weight it

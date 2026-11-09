@@ -13,9 +13,7 @@ description: >
   or touch icon, site metadata, SEO title or description. Also use when
   RE-doing any of those (reshoot the assets, redo the shots, new share image),
   when a shared link looks wrong in Slack or iMessage, and when finishing a
-  component that was always intended for the Marketplace. Covers the gates that
-  must be cleared first, the capture recipes, the brand assets that are fixed
-  across projects, and the traps that silently produce broken assets.
+  component that was always intended for the Marketplace.
 ---
 
 # Framer Marketplace listing
