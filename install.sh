@@ -38,7 +38,8 @@ link_one() { # group skill target_dir
 	local src="$SKILLS/$1/$2" dst="$3/$2"
 	mkdir -p "$3"
 	if [ -L "$dst" ]; then
-		if ours "$dst"; then ln -sfn "$src" "$dst"; return 0; fi
+		# Ours, or dead (the repo moved, or the skill went): safe to point at this repo.
+		if ours "$dst" || [ ! -e "$dst" ]; then ln -sfn "$src" "$dst"; return 0; fi
 		warn "$dst is a link to $(readlink "$dst"), not this repo. Left alone."
 		return 0
 	fi
@@ -142,7 +143,7 @@ check() {
 		[ -d "$t" ] || continue
 		for l in "$t"/*; do
 			[ -e "$l" ] || [ -L "$l" ] || continue
-			if ours "$l" && [ ! -e "$l" ]; then warn "$l: dead link (run ./install.sh)"; problems=$((problems + 1)); fi
+			if [ -L "$l" ] && [ ! -e "$l" ]; then warn "$l: dead link (run ./install.sh)"; problems=$((problems + 1)); fi
 			if [ ! -L "$l" ] && contains "$names" "$(basename "$l")"; then warn "$l: a real folder shadows the repo's $(basename "$l")"; problems=$((problems + 1)); fi
 		done
 	done
