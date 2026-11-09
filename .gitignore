@@ -1,3 +1,9 @@
 .DS_Store
 node_modules/
 *.log
+
+# Written here by other tools through the old ~/.claude/skills link; not ours
+skills/synced/
+skills/framer/
+skills/framer-code-components/
+dist/
