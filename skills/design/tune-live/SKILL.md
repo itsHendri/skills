@@ -40,7 +40,7 @@ Plain HTML page, lab or shader spike. Always the pinned tag, never an unpinned U
 
 ```html
 <script type="module">
-import { tune } from "https://cdn.jsdelivr.net/gh/itsHendri/tune-panel@0.1.1/tune-panel.js";
+import { tune } from "https://cdn.jsdelivr.net/gh/itsHendri/tune-panel@0.1.2/tune-panel.js";
 
 tune(CFG, {
   max: { min: 0, max: 30, step: 0.5, unit: "°", label: "Tilt max" },
@@ -49,7 +49,7 @@ tune(CFG, {
 </script>
 ```
 
-Vite or React app: `npm i -D github:itsHendri/tune-panel#0.1.1`, then mount it once in an
+Vite or React app: `npm i -D github:itsHendri/tune-panel#0.1.2`, then mount it once in an
 effect and destroy it on unmount:
 
 ```js
@@ -93,8 +93,9 @@ Continuous levers on a Design Artifact canvas use the canvas's own `data-props` 
 1. **Wire.** On a branch (or in an exploration file), add the panel. Every control gets a
    real range: wide enough to reach a surprising answer, not 0 to 100 by habit. The
    defaults are the current values in the code, so the first frame looks like what shipped.
-2. **Tune.** The user plays with it. Don't
-   touch the code meanwhile.
+2. **Tune.** The user plays with it. Holding the compare pill at the panel's top (or the
+   backslash key) shows the code's values; letting go brings the edits back. Don't touch
+   the code meanwhile.
 3. **Paste.** The user presses Copy values and pastes the JSON into chat.
 4. **Read it back.** Point out any value sitting at the end of its range (widen the range
    and offer another round), and anything extreme, like a spring that wobbles for seconds.
