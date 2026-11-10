@@ -54,6 +54,9 @@ Motion answers questions users don't know they're asking:
 **Rule:** Entrances use ease-out (decelerate arriving). Exits use ease-in (accelerate leaving).
 Elements moving between positions use ease-in-out.
 
+**Exact values:** these are starting points. When a spring, curve or duration needs to be felt
+to be right, use `tune-live`: wire a temporary panel, let the user tune, bake the numbers in.
+
 ---
 
 ## Timing Rules

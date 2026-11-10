@@ -12,6 +12,7 @@ All notable changes to this skill system. Format based on
 - `framer-marketplace`'s description trimmed to 945 characters (the spec allows 1024).
 
 ### Added
+- `tune-live` skill: a temporary panel (tune-panel, the studio's own, themed per brand) to find feel values, baked in and removed in one change. `motion-design` points to it.
 - `codename` and `design-canvas` skills.
 - `3d-print` group: `blender-workflow` and `3d-print-design`, moved in from the Blender workspace. The owner's own printer and filaments stay in that workspace's CLAUDE.md; the skill reads them from there.
 - `global/AGENTS.md`: working preferences every session loads, wired up by `install.sh`.

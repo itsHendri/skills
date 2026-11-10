@@ -3,7 +3,7 @@
 A modular skill system: focused files that load expert-level guidance exactly when a task
 needs it, without dragging irrelevant context into every session.
 
-Currently 22 skills in five groups (core, design, web, 3d-print, video), so a machine installs only the workflows it needs.
+Currently 23 skills in five groups (core, design, web, 3d-print, video), so a machine installs only the workflows it needs.
 
 This repo is the **single source of truth**. Any copy elsewhere — a local `.claude/skills`
 directory, a Claude project, a blog write-up — is a snapshot of this.
@@ -30,7 +30,7 @@ one when a task spans domains.
 | [`machine-handoff`](skills/core/machine-handoff/SKILL.md) | Auditing a Mac before wiping or handing it back: unpushed commits, uncommitted changes, stashes, repos with no remote, and machine config git doesn't cover. |
 | [`doc-acceptance-test`](skills/core/doc-acceptance-test/SKILL.md) | Testing documentation an *agent* must build from — isolate a fresh agent, make it build something real, harvest a critique of the docs. |
 
-### design: UX and visual design (13)
+### design: UX and visual design (14)
 
 | Skill | What it owns |
 |---|---|
@@ -40,6 +40,7 @@ one when a task spans domains.
 | [`accessibility`](skills/design/accessibility/SKILL.md) | WCAG 2.1 AA baseline. Auto-applies to any UI output. |
 | [`content-ux-writing`](skills/design/content-ux-writing/SKILL.md) | Every word in the interface — labels, errors, empty states, voice and tone. |
 | [`motion-design`](skills/design/motion-design/SKILL.md) | Animation principles, motion tokens, easing, per-component timing. |
+| [`tune-live`](skills/design/tune-live/SKILL.md) | Finding feel values (springs, easing, shader parameters) with tune-panel, the studio's own temporary panel themed per brand, then baking the numbers in and removing the panel. |
 | [`prototyping`](skills/design/prototyping/SKILL.md) | Figma craft, fidelity decisions, Dev Mode prep, asset export, prototype strategy. |
 | [`ui-audit`](skills/design/ui-audit/SKILL.md) | Reviewing and critiquing *existing* UI — six lenses, prioritised findings. |
 | [`design-context`](skills/design/design-context/SKILL.md) | Cross-session consistency — load a context block at the start of a design session. |
@@ -73,6 +74,7 @@ Coming soon.
 
 - **Design a new component** — `ux-foundations` → `design-system` → `visual-ui` → `accessibility`
 - **Build it in code** — `design-system` → `design-to-react` → `technical-design`
+- **Dial in how something moves**: `motion-design` → `tune-live`
 - **Get the layout right before building** — `ux-flows` → `design-canvas` → `visual-ui`
 - **Ship a system others build from** — `design-system` → `design-communication` → `doc-acceptance-test`
 - **Ship a feature end-to-end** — `ux-flows` → `prototyping` → `content-ux-writing` → `design-communication`
