@@ -479,6 +479,11 @@ Things that went wrong on 2026-11-07 (`macbook-server-stand`), and what stops ea
   print worst) and `wall_generator="arachne"` (thin bars as even lines, no gap fill).
   - Offer a **sample slice** of the part's busiest end (about 20 mm, under an hour) before the
     full print.
+- **A test piece cut through a lattice needs a solid base.** Cut straight through the struts,
+  it stands on dozens of tiny strut ends (about 125 mm² on a 65 mm ring). The moss pole fit
+  ring's first layer didn't stick (2026-11-10). Union a solid ring about 1.6 mm tall under the
+  cut, starting 0.5 mm below it so the cut stays clean. Check the area on the bed from the STL:
+  faces with every vertex at z = 0.
 
 ## Device stands and slots (from `macbook-server-stand`, 2026-11-07)
 - **Research the bought ones first and name them in the options:** BookArc, BookArc Flex,
