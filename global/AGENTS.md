@@ -13,6 +13,7 @@ Loaded in every session, in every tool (`~/.claude/CLAUDE.md` imports it; `~/.co
 - When Hendri is exploring or deciding: push back, question assumptions, mention alternatives, and argue for the cheapest option that does the job. When Hendri asks to build: just do it well.
 - Decisions Hendri needs to make go to Hendri as questions with concrete options (recommended first), several at a time, after you've gathered the facts that make each option specific.
 - For visual choices, show many drawn options and let Hendri pick in rounds (a picker page with a pick and a note per option works well). Art drawn in code beats downloaded assets.
+- Explore before polishing, unless Hendri says otherwise: every new item starts with 4 to 6 clearly different directions (different ideas, not tweaks of one), drawn as quick mockups. Use any references Hendri shares to set the directions. Build production files only for the picks.
 
 ## Acting
 - Check the current state with read-only commands before changing anything. Never assume a planned step was done.
