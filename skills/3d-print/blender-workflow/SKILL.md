@@ -198,6 +198,29 @@ $BLENDER --background project.blend --python render_preview.py           # rende
   - Use **Flat** lighting with cavity for top views: Studio makes black look
     mid-grey.
 
+## Merging into one solid through a 3D distance grid (from `moss-pole`)
+For lattices and organic shapes: Mesh to SDF Grid, SDF Grid Offset (close then open, for fillets),
+then Grid to Mesh, all in a geometry-nodes modifier.
+- **Keep Grid to Mesh `Adaptivity` at 0.** Adaptivity merges triangles unevenly in grid space,
+  which gives jagged facets and sawtooth rims that look gritty in the slicer. At 0.3, the worst
+  1 % of facets tilted 44° off the true surface.
+- **Smooth on the grid, before meshing:** `GeometryNodeSDFGridMean` (Width 1, Iterations 2).
+  - It irons out the voxel steps without shrinking 2 mm struts.
+  - Avoid `SDFGridMeanCurvature`: it thins small features.
+- **Then cut the triangle count with a Decimate modifier** (collapse, keeping about 15 %) instead
+  of using adaptivity. Its triangles stay even and smooth: worst 1 % tilt 10°, at the old file
+  size.
+  - **Triangulate before decimating** (`GeometryNodeTriangulate` after Grid to Mesh). A decimated
+    quad can share its diagonal with a neighbour, and triangulating it later (in cleanup or at
+    STL export) doubles that edge: 3 faces on one edge.
+  - Check for open edges after decimating, and retry at a slightly higher ratio if any appear.
+  - Don't `remove_doubles` a decimated mesh blindly: merging points within 1e-4 mm folded it in
+    two spots. Count open edges before and after, and back off if the count rises.
+- 0.16 mm voxels are fine enough for a 0.4 mm nozzle. A 230 mm lattice section took about 6 min.
+- **Judge smoothness by facet tilt, not distance.** Facet tilt is the angle between each face
+  normal and a fine reference build's normal at the nearest point. The old, gritty mesh was
+  already within 0.05 mm on 95 % of the surface, so distance didn't show the problem.
+
 ## Preview renders
 - Workbench, studio light, cavity on, for quick model previews. Size the
   camera framing from the object's dimensions; never hard-code it.
