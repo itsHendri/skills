@@ -485,6 +485,29 @@ Things that went wrong on 2026-11-07 (`macbook-server-stand`), and what stops ea
   cut, starting 0.5 mm below it so the cut stays clean. Check the area on the bed from the STL:
   faces with every vertex at z = 0.
 
+## Lattice tubes drawn from lines (from `moss-pole`, 2026-11-11)
+- **Pointed arches reach further than round ones.** Making arches pointed (so no flat ceilings)
+  made them about 1.5× as tall. Any "hidden behind the row in front" test must use the real
+  pointed height, and check the row two in front too. Otherwise:
+  - a tip lies 0.3 mm under a line of the fan two rows up: two struts merge, then split into a
+    sliver gap with a hanging tail;
+  - lines get cut off at the old height instead of on another line, leaving ends hanging 1–4 mm
+    from any support.
+
+  Both printed as wisps and curly strands on PETG (fit test v3), though the 45° overhang check
+  showed only 0.3 mm² specks.
+- **Check the line drawing, not just the mesh:**
+  - every line end should land within half a strut width of another line's centre;
+  - no two lines should run within 10° of parallel and closer than a strut width + 0.6 mm for
+    3 mm or more (`doubled_struts` in `moss-pole/build_moss_pole.py`). Lines leaving a shared
+    corner at 15° or more are fine.
+- **Find what printed in the air from the slice itself:** the gcode marks `; FEATURE: Overhang
+  wall` and `Bridge`. Group those moves by height and angle around the part's centre (map back
+  through the item transform in `3D/3dmodel.model`), and compare with the owner's photos.
+- **PETG lattices string on travel across the openings.** Slice with Avoid crossing wall on
+  (`reduce_crossing_wall`, Quality › Advanced) and the overhang fan at about 80 %
+  (`overhang_fan_speed`, a filament setting: list it in `different_settings_to_system[1]`).
+
 ## Device stands and slots (from `macbook-server-stand`, 2026-11-07)
 - **Research the bought ones first and name them in the options:** BookArc, BookArc Flex,
   mTower, Grovemade. The owner picks faster from "like X, but…" than from abstract shapes.
