@@ -6,7 +6,7 @@
 #   ./install.sh                            re-link the groups already installed (after git pull), prune dead links
 #   ./install.sh --remove <group>           unlink one group
 #   ./install.sh --list                     groups, their skills, and what's installed
-#   ./install.sh --check                    every link resolves; names, descriptions and duplicates are valid
+#   ./install.sh --check                    every link resolves; names, descriptions, length (500 lines) and duplicates are valid
 #   ./install.sh --zip <group|skill>        dist/<skill>.zip for uploading to claude.ai, ChatGPT or Gemini
 #
 # Targets (override for tests): CLAUDE_SKILLS_DIR (~/.claude/skills), AGENTS_SKILLS_DIR (~/.agents/skills),
@@ -126,7 +126,7 @@ front() { # file key
 }
 
 check() {
-	local problems=0 names="" s g d n desc len
+	local problems=0 names="" s g d n desc len lines
 	for g in $(groups); do
 		for s in $(skills_in "$g"); do
 			n="$(front "$SKILLS/$g/$s/SKILL.md" name)"
@@ -135,6 +135,8 @@ check() {
 			[ "$n" = "$s" ] || { warn "$g/$s: name is \"$n\", the folder is \"$s\""; problems=$((problems + 1)); }
 			case "$s" in *[!a-z0-9-]*) warn "$g/$s: name must be lowercase-hyphen"; problems=$((problems + 1)) ;; esac
 			{ [ "$len" -ge 1 ] && [ "$len" -le 1024 ]; } || { warn "$g/$s: description is $len characters (1 to 1024)"; problems=$((problems + 1)); }
+			lines=$(wc -l < "$SKILLS/$g/$s/SKILL.md" | tr -d ' ')
+			[ "$lines" -le 500 ] || { warn "$g/$s: SKILL.md is $lines lines (500 at most; move material to references/)"; problems=$((problems + 1)); }
 			contains "$names" "$s" && { warn "$s: in two groups"; problems=$((problems + 1)); }
 			names="$names $s"
 		done

@@ -5,6 +5,36 @@ All notable changes to this skill system. Format based on
 
 ## [Unreleased]
 
+### 2026-11-11: the skills session (23 skills to 15)
+
+A scan of every Claude Code session from 2026-09-04 to 2026-11-11 (107 sessions) showed 15 of 26 skills never used, and the broad design skills not loading even when their topic came up (accessibility 0 of 12 times, framer-marketplace 0 of 9, motion-design 0 of 7). The working method also changed: UI is now designed in code and on the canvas, with no design-then-handoff step.
+
+Removed (archived, not deleted; git has the history):
+- `accessibility`: its four must-do rules moved to `global/AGENTS.md`, its checks to the accessibility lens of `ui-audit`.
+- `ux-foundations`: its State Inventory moved to `design-system/references/STATES.md`.
+- `design-context`: `design-system/references/CONTEXT.md` already does this.
+- `design-research-synthesis`, `design-communication`, `prototyping`, `technical-design`, `design-to-react`: handoff-era skills, never used.
+- `client-update`: the client previews replaced it; the "what to test" rules moved to the studio's own playbook.
+- `framer-marketplace`: became `site-launch`.
+
+Added:
+- `site-launch`: metadata, share image, icons, the link preview, the hardening sweep and a health route, for any stack. Keeps the traps from `framer-marketplace` that are true everywhere and a short Framer note; the Marketplace listing parts and capture scripts are gone.
+- `retro` (slash only): end-of-session lessons, each sorted into one home.
+- `design-system/references/STATES.md`: the one list of component states (default, hover, pressed, focus, inactive, loading, invalid, empty, success). Five skills listed them before, under three sets of names.
+- `scripts/usage.py`: uses per skill and per month from the transcripts.
+- `./install.sh --check` now fails a SKILL.md over 500 lines.
+
+Changed:
+- Every description rewritten to about 300 characters: what the skill produces, "Use for:" in the words actually typed, and where it stops or what comes next. No "Expert skill for", no "any UI task".
+- `machine-handoff` and `doc-acceptance-test` are slash only (`disable-model-invocation: true`), so they leave the session's list.
+- `ui-audit`: the accessibility lens is now the full check (contrast numbers, keyboard, focus, names, live regions, zoom), and the audit starts with a fresh-eyes pass by a subagent where the tool has them.
+- `ux-flows`: the appendix on publishing flows to FigJam boards is removed. Flows are drawn on a Flows page of the project's Design canvas instead, and `design-canvas` has that page in its stage table.
+- `3d-print-design`: the lessons per kind of part moved to `references/lessons.md` (the file was 724 lines); SKILL.md keeps the rules, the checklists and an index.
+- Pointers to retired skills (`design-systems`, `design-communication`) and one old token name fixed.
+- `global/AGENTS.md`: a short "Every interface" section.
+- After test-firing both skills on two live sites (2026-11-11): `ui-audit` now carries the fresh-eyes brief itself, says when the pass is worth its cost, asks for a browser that can emulate a viewport, and checks for controls hidden until scrolled into view and for overlays that ignore Escape; `site-launch` now says to measure the share image and icons from the published URL, that icons must be square, to parse tags properly (quotes inside values), and to check the card type, each language's tags and that the 404 page has a body.
+- From a read of a friend's kit (see `vendor.md`): descriptions that say what a skill produces, and a closing "Next" line. Its queue scripts and worker agents were not adopted.
+
 ### Changed
 - `./install.sh <group>` adds to the groups already installed instead of replacing them.
 - Skills are grouped by workflow: `skills/core/`, `skills/design/`, `skills/web/`, `skills/3d-print/`, `skills/video/`. Links in the README follow; anyone linking to `skills/<name>/` needs `skills/<group>/<name>/`.

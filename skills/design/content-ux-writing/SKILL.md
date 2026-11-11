@@ -1,12 +1,6 @@
 ---
 name: content-ux-writing
-description: >
-  Expert skill for UX writing, microcopy, and content design. Use when the user asks about:
-  button labels, error messages, empty state copy, onboarding copy, placeholder text, tooltips,
-  confirmation dialogs, success messages, loading messages, form labels, helper text, CTAs,
-  notification copy, or asks to write/improve/audit any text that appears in a UI. Also
-  triggers for: voice and tone questions, content style guides, naming conventions for UI
-  elements, and any request to make copy clearer, friendlier, or more actionable.
+description: Write the words inside an interface: button labels, error messages, empty states, form labels and helper text, confirmations, toasts, onboarding lines. Use when writing or fixing any UI text. Reads the brand's voice file first when the project has one. Not for posts, emails or marketing pages.
 ---
 
 # Content Design & UX Writing
@@ -14,6 +8,12 @@ description: >
 Interface copy is interaction design. Every word in a UI is a decision about how the
 product treats its users. Concise, objective, and scannable copy improves usability by
 124% (NNg research). Most interfaces fail not because of bad visuals — but bad words.
+
+---
+
+## Before writing
+
+If the project belongs to a brand with a voice file (`identity/voice.md` or similar), read it first. The brand's voice decides tone and vocabulary; this skill decides structure and clarity. Which states need copy (loading, invalid, empty, success) is listed in `design-system/references/STATES.md`.
 
 ---
 

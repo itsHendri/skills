@@ -1,12 +1,6 @@
 ---
 name: motion-design
-description: >
-  Expert skill for motion design, UI animation, and microinteractions. Use when the user
-  asks about: animations, transitions, microinteractions, loading states, page transitions,
-  hover effects, scroll animations, gesture feedback, or asks to make an interface feel
-  more alive, polished, or responsive. Also triggers for: skeleton loaders, progress
-  indicators, toast animations, modal transitions, drag-and-drop feedback, and any
-  question about timing, easing, or how elements should move.
+description: How UI should move: durations, easing, springs, enter and exit, hover and press feedback, page transitions, scroll effects, skeletons, reduced motion. Use when adding or changing any animation or transition, or when something should feel smoother, snappier or more alive. To find the exact numbers by feel, continue with tune-live.
 ---
 
 # Motion & Animation Design
@@ -97,6 +91,8 @@ margin, padding    → restructure layout instead
 ---
 
 ## Component-by-Component Specs
+
+The states themselves and their names are in `design-system/references/STATES.md`. This section is only how each one moves.
 
 ### Hover States
 - **Instant on (0ms), 150ms ease-in off**

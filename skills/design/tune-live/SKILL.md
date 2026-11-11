@@ -1,13 +1,6 @@
 ---
 name: tune-live
-description: >
-  Tune motion and other feel values live with a temporary control panel instead of guessing
-  them. Use when tuning springs (stiffness, damping, mass), easing curves, durations, tilt or
-  parallax amounts, shader or canvas parameters, halftone or noise settings, or any number the
-  user would otherwise judge by retyping it. Also triggers for: "add sliders", "let me tweak
-  this", "make it tunable", "dial this in", "tuning panel", tune-panel, a dev-only tweak panel,
-  DialKit, Tweakpane, leva. Covers wiring tune-panel into a plain page or a React/Vite app,
-  theming it per brand, the wire, tune, paste, bake loop, and removing it before anything ships.
+description: Find feel values with tune-panel, a temporary slider panel, instead of guessing them: springs, easing, durations, tilt, parallax, shader, halftone or noise settings. Use for: add sliders, let me tweak this, dial it in, make it tunable, tuning panel. Covers wiring it in, theming it per brand, baking the numbers in and removing the panel before anything ships.
 ---
 
 # Tune live: wire a panel, let the user tune, bake the numbers, remove the panel

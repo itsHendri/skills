@@ -1,13 +1,6 @@
 ---
 name: visual-ui
-description: >
-  Expert skill for visual design and UI aesthetics. Use when the user asks about: layout,
-  color systems, typography, spacing, grids, iconography, visual hierarchy, UI components,
-  card design, dashboard design, responsive layouts, dark mode, or asks to make something
-  look better, more polished, or more professional. Also triggers for: "design a screen",
-  "create a UI", "style this component", "improve the visual design", landing pages,
-  marketing pages, and any request where the primary output is a visually designed interface.
-  Always produces distinctive, production-grade UI — never generic AI aesthetics.
+description: Visual craft for UI designed in code: layout, type scale, colour, spacing, depth, dark mode, and how to avoid the generic AI look. Use when building or restyling a page, screen, landing page, dashboard or component, or when asked to make something look better. For reviewing finished UI use ui-audit; for variable names use design-system.
 ---
 
 # Visual & UI Design
@@ -97,7 +90,7 @@ Letter spacing: negative (–0.02em) for large headings, 0 for body, positive fo
 ## Color
 
 **Rules:**
-- Define a full token system first (see design-systems)
+- Define a full token system first (see `design-system`)
 - Use modern CSS color functions: `oklch()`, `color-mix()`, `light-dark()` — perceptually uniform, maintainable
 - OKLCH critical rule: **as you move toward white or black, reduce chroma** — high chroma at extreme lightness looks garish. A light blue at 85% lightness needs ~0.08 chroma, not the 0.15 of your base color
 - Tint your neutrals toward your brand hue — `oklch(95% 0.01 250)` vs `oklch(95% 0 0)`. The chroma is tiny but perceptible; it creates subconscious cohesion between your brand color and your UI

@@ -1,6 +1,6 @@
 ---
 name: design-canvas
-description: Run every design round for a project on that project's own Design canvas (a claude.ai Design Artifact), from wireframes through first drafts, versions, iterations and section iterations to release. Use whenever the user wants wireframes, layout or navigation exploration, a first draft, design iterations or variations, a v1 or v2 design, section iterations, "design this screen", mockups on a canvas, or picks up design work on a project that already has a canvas. Decides WHERE and HOW the work happens (one canvas per project, a page per stage, decisions recorded); craft skills like visual-ui, ux-flows or accessibility still apply to what goes on it.
+description: Run a project's design rounds on its own Design canvas: wireframes, 4 to 6 directions, drafts, versions and section iterations, with each decision recorded. Use for: flow maps, wireframes, mockups, design directions, a first draft, design iterations, design this screen or page, or any design round before production code. Next: build the pick, then ui-audit.
 ---
 
 # Design canvas: one canvas per project, a page per stage
@@ -33,6 +33,7 @@ Pages are stages, in this order; add a page only when its stage starts:
 
 | Page | What's on it | Fidelity |
 |---|---|---|
+| Flows | When the work starts from how people move through the product: one row per flow, a small artboard per screen, labelled arrows, branches below (the `ux-flows` skill has the method) | Boxes and real labels |
 | Wireframes | 3-5 structurally different concepts, each across the key states | Greys, real content, real size, no styling decisions |
 | Drafts | The chosen wireframe in the product's real tokens and type; 2-3 visual directions | Real look, rough edges fine |
 | V1 | One complete design with every state, and its iterations | Hi-fi |
@@ -59,7 +60,8 @@ Components page. When the next stage starts, copy the component along with the s
 
 States: one artboard per screen with a `state` enum tweak, plus small wrapper artboards
 (`<dc-import name="screen" state="calm">`) for each state worth seeing side by side.
-One source, every state visible, no copies drifting apart.
+One source, every state visible, no copies drifting apart. The list of states and their names is in
+`design-system/references/STATES.md`.
 
 ## 3. Ground every round in the real product
 

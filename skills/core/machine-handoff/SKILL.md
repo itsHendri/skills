@@ -1,13 +1,7 @@
 ---
 name: machine-handoff
-description: >
-  Audit a Mac for work that exists nowhere else, before wiping, replacing, or
-  handing it back. Use when the user says: wiping my laptop, resetting my Mac,
-  new machine, getting a new laptop, returning my work machine, factory reset,
-  migrating to a new computer, or asks "is everything backed up / on GitHub".
-  Finds unpushed commits, uncommitted changes, git stashes, repos with no
-  remote at all, and machine config that git does not cover. Also triggers for
-  "what am I about to lose" and post-wipe restore questions.
+description: Audit a Mac before wiping, replacing or returning it: unpushed commits, uncommitted changes, stashes, repos with no remote, and machine config git does not cover. Slash only: run it with /machine-handoff.
+disable-model-invocation: true
 ---
 
 # Machine handoff

@@ -1,97 +1,72 @@
 # Skills
 
-A modular skill system: focused files that load expert-level guidance exactly when a task
-needs it, without dragging irrelevant context into every session.
+A small set of skills for someone who designs by building: focused files that load when a task
+needs them, and stay out of the way when it doesn't.
 
-Currently 23 skills in five groups (core, design, web, 3d-print, video), so a machine installs only the workflows it needs.
+Currently 15 skills in five groups (core, design, web, 3d-print, video), so a machine installs only the workflows it needs.
 
-This repo is the **single source of truth**. Any copy elsewhere — a local `.claude/skills`
-directory, a Claude project, a blog write-up — is a snapshot of this.
+This repo is the single source of truth. Any copy elsewhere is a snapshot of this.
 
-## Why modular
+## Why so few
 
-One large skill file means every task loads everything, relevant or not. Smaller focused files
-load only what the task actually needs. Each skill has a single responsibility, a precise
-trigger, and its own anti-patterns.
+A session lists every installed skill, and the model picks from that list by description. In November 2026 a scan of ten weeks of sessions showed 15 of 26 skills had never been used, and the broad ones lost even when their topic came up, because a description that claims every UI task singles out nothing. So the rule now: a skill stays if it gets used, a description says what the skill produces and when it stops, and guidance that several skills share lives in one place.
 
-## How activation works
-
-Skills activate on language. Describe a task in natural phrasing and the matching skill loads —
-you don't need to name it. The `description` frontmatter in each `SKILL.md` lists the vocabulary
-that triggers it, so you can see which fires for a given task and deliberately invoke more than
-one when a task spans domains.
+`python3 scripts/usage.py` reruns that scan.
 
 ## The skills, by group
 
-### core: Always installed (2)
+### core: always installed (3, all slash only)
+
+Slash-only skills are not in the session's list. Type the name to run one.
 
 | Skill | What it owns |
 |---|---|
-| [`machine-handoff`](skills/core/machine-handoff/SKILL.md) | Auditing a Mac before wiping or handing it back: unpushed commits, uncommitted changes, stashes, repos with no remote, and machine config git doesn't cover. |
-| [`doc-acceptance-test`](skills/core/doc-acceptance-test/SKILL.md) | Testing documentation an *agent* must build from — isolate a fresh agent, make it build something real, harvest a critique of the docs. |
+| [`/retro`](skills/core/retro/SKILL.md) | End of a session: what went wrong, and where each lesson belongs (a skill, a project file, a feedback note). |
+| [`/machine-handoff`](skills/core/machine-handoff/SKILL.md) | Auditing a Mac before wiping or handing it back: unpushed commits, uncommitted changes, stashes, repos with no remote, config git doesn't cover. |
+| [`/doc-acceptance-test`](skills/core/doc-acceptance-test/SKILL.md) | Testing documentation an agent must build from: a fresh agent builds something real and reports the defects in the docs. |
 
-### design: UX and visual design (14)
-
-| Skill | What it owns |
-|---|---|
-| [`ux-foundations`](skills/design/ux-foundations/SKILL.md) | Base layer, always active. Shared mental models, heuristics, decision frameworks. |
-| [`visual-ui`](skills/design/visual-ui/SKILL.md) | Layout, colour, typography, spacing, dark mode — distinctive production-grade visuals. |
-| [`ux-flows`](skills/design/ux-flows/SKILL.md) | Flows, IA, navigation, screen-to-screen logic, and full state management. Plus an appendix for publishing a finished flow to an infinite canvas as an engineer-ready handoff board. |
-| [`accessibility`](skills/design/accessibility/SKILL.md) | WCAG 2.1 AA baseline. Auto-applies to any UI output. |
-| [`content-ux-writing`](skills/design/content-ux-writing/SKILL.md) | Every word in the interface — labels, errors, empty states, voice and tone. |
-| [`motion-design`](skills/design/motion-design/SKILL.md) | Animation principles, motion tokens, easing, per-component timing. |
-| [`tune-live`](skills/design/tune-live/SKILL.md) | Finding feel values (springs, easing, shader parameters) with tune-panel, the studio's own temporary panel themed per brand, then baking the numbers in and removing the panel. |
-| [`prototyping`](skills/design/prototyping/SKILL.md) | Figma craft, fidelity decisions, Dev Mode prep, asset export, prototype strategy. |
-| [`ui-audit`](skills/design/ui-audit/SKILL.md) | Reviewing and critiquing *existing* UI — six lenses, prioritised findings. |
-| [`design-context`](skills/design/design-context/SKILL.md) | Cross-session consistency — load a context block at the start of a design session. |
-| [`design-system`](skills/design/design-system/SKILL.md) | One naming scheme for a project's variables — three layers, states on every colour that acts, one inactive set, a primary/secondary/tertiary hierarchy — plus Atomic Design, the component contract, governance and the token pipeline. |
-| [`design-research-synthesis`](skills/design/design-research-synthesis/SKILL.md) | Research and analytics into prioritised design recommendations. |
-| [`design-communication`](skills/design/design-communication/SKILL.md) | Framing decisions, specs, dev tickets, reviews, acceptance criteria, pushback. |
-| [`design-canvas`](skills/design/design-canvas/SKILL.md) | Every design round for a project on its own Design canvas, from wireframes through drafts, versions and iterations to release, with each decision recorded. |
-
-### web: Building and shipping for the web (installs design too) (5)
+### design: designing in code (8)
 
 | Skill | What it owns |
 |---|---|
-| [`design-to-react`](skills/web/design-to-react/SKILL.md) | Figma into production React — architecture, props, state, Tailwind. |
-| [`technical-design`](skills/web/technical-design/SKILL.md) | The CSS and implementation knowledge that makes designs buildable and performant. |
-| [`framer-marketplace`](skills/web/framer-marketplace/SKILL.md) | Taking a Framer component from "it works" to listed — the pre-submission sweep, listing screenshots, a recorded interaction loop, and the copy. Carries the capture recipes and the traps that silently produce broken assets. |
-| [`client-update`](skills/web/client-update/SKILL.md) | The one-page artifact a client reads after work lands on staging: what to test, what simply changed, and nothing else. Carries the studio identity, so the updates accumulate as a run of issued documents. |
-| [`codename`](skills/web/codename/SKILL.md) | Working with the Codename Chrome panel: it reads the design system a live page runs, lets a person edit it, and hands the change to the agent at token level over a local MCP bridge. |
+| [`ux-flows`](skills/design/ux-flows/SKILL.md) | Flows, information architecture, navigation, and the flow-level paths (offline, timeout, partial success). |
+| [`design-canvas`](skills/design/design-canvas/SKILL.md) | Every design round for a project on its own Design canvas, from wireframes and directions to versions, with each decision recorded. |
+| [`design-system`](skills/design/design-system/SKILL.md) | One naming scheme for a project's variables, the component contract, and `references/STATES.md`, the one list of component states. |
+| [`visual-ui`](skills/design/visual-ui/SKILL.md) | Layout, type, colour, spacing, dark mode, and avoiding the generic AI look. |
+| [`motion-design`](skills/design/motion-design/SKILL.md) | How things move: durations, easing, per-component timing, reduced motion. |
+| [`tune-live`](skills/design/tune-live/SKILL.md) | Finding feel values with tune-panel, baking the numbers in and removing the panel. |
+| [`content-ux-writing`](skills/design/content-ux-writing/SKILL.md) | The words in the interface, after reading the brand's voice. |
+| [`ui-audit`](skills/design/ui-audit/SKILL.md) | Reviewing existing UI through six lenses, with a fresh-eyes pass and the full accessibility check. |
+
+### web: shipping for the web (installs design too) (2)
+
+| Skill | What it owns |
+|---|---|
+| [`site-launch`](skills/web/site-launch/SKILL.md) | Getting a site ready to go public on any stack: metadata, share image, icons, the link preview, the hardening sweep, a health route. |
+| [`codename`](skills/web/codename/SKILL.md) | Working with the Codename Chrome panel, which hands design changes over at token level. |
 
 ### 3d-print: Blender and 3D printing (2)
 
 | Skill | What it owns |
 |---|---|
-| [`blender-workflow`](skills/3d-print/blender-workflow/SKILL.md) | Running Blender for someone with no 3D experience: the MCP connection or headless scripts, parametric builds with every dimension in one place, scene hygiene, preview renders. |
-| [`3d-print-design`](skills/3d-print/3d-print-design/SKILL.md) | FDM design rules (watertight geometry, clearances, overhangs, minimum features), the checks before calling a model done, headless slicing with Bambu Studio, and handing a print to someone else. |
+| [`blender-workflow`](skills/3d-print/blender-workflow/SKILL.md) | Running Blender for someone with no 3D experience: the MCP connection or headless scripts, parametric builds, scene hygiene, preview renders. |
+| [`3d-print-design`](skills/3d-print/3d-print-design/SKILL.md) | FDM design rules, the checks before calling a model done, headless slicing, handing a print over. Lessons per kind of part are in `references/lessons.md`. |
 
 ### video: Video (0)
 
 Coming soon.
 
-## How the skills work together
+## The usual order
 
-- **Design a new component** — `ux-foundations` → `design-system` → `visual-ui` → `accessibility`
-- **Build it in code** — `design-system` → `design-to-react` → `technical-design`
-- **Dial in how something moves**: `motion-design` → `tune-live`
-- **Get the layout right before building** — `ux-flows` → `design-canvas` → `visual-ui`
-- **Ship a system others build from** — `design-system` → `design-communication` → `doc-acceptance-test`
-- **Ship a feature end-to-end** — `ux-flows` → `prototyping` → `content-ux-writing` → `design-communication`
-- **Hand a flow to engineering on a board** — `ux-flows` (design the flow, then its canvas appendix) → `design-communication` for the spec content the cards carry
-- **Get team alignment** — `design-research-synthesis` → `design-communication`
-- **Push back on a feasibility concern** — `technical-design` → `design-communication`
-- **Audit existing UI** — `ui-audit` (runs its own lenses; pull in `accessibility` or `visual-ui` for depth)
-- **Keep work consistent across sessions** — `design-context`, loaded once at session start
-- **Ship a component to the Framer Marketplace** — `ui-audit` (fix P0/P1 first) → `framer-marketplace` → `content-ux-writing` for the listing copy
-- **Hand finished work to a client for review** — `client-update` → `content-ux-writing` if the test steps need tightening
+`ux-flows` → `design-canvas` → build the pick (`design-system`, `visual-ui`, `motion-design` → `tune-live`, `content-ux-writing`) → `ui-audit` → `site-launch` → `/retro`
 
-## What's inside every skill file
+Each skill names the next one at its end.
 
-- **Trigger description** — the language and scenarios that activate it
-- **Core principles** — the non-negotiables for that domain
-- **Practical rules and patterns** — specific, actionable, with real examples
-- **Anti-patterns** — what not to do and why
+## One home for shared guidance
+
+- Component states and their names: `design-system/references/STATES.md`
+- The accessibility rules every interface follows: `global/AGENTS.md`. The check: the accessibility lens in `ui-audit`.
+- Variable names: `design-system/references/NAMING.md`
 
 ## Install
 
@@ -110,7 +85,8 @@ cd skills
 | `./install.sh` | Re-link the groups already installed (after `git pull`) and prune dead links |
 | `./install.sh --list` | Groups, their skills, and what's installed |
 | `./install.sh --remove <group>` | Unlink one group |
-| `./install.sh --check` | Every link resolves, every `name` matches its folder, descriptions are 1 to 1024 characters, no duplicates |
+| `./install.sh --check` | Every link resolves, every `name` matches its folder, descriptions are 1 to 1024 characters, SKILL.md is 500 lines at most, no duplicates |
+| `python3 scripts/usage.py` | Uses per skill and per month from the Claude Code transcripts, and which skills were never used |
 | `./install.sh --zip <group or skill>` | `dist/<skill>.zip`, for uploading to claude.ai, ChatGPT or Gemini, which take uploads only |
 
 **A new computer:** clone, run `./install.sh` with the groups it needs, then the commands in [vendor.md](vendor.md) for the third-party skills. In Bionic, turn on Settings → Skills → "Use skills found in other apps".

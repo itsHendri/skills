@@ -1,6 +1,6 @@
 ---
 name: codename
-description: Work with the Codename panel — a Chrome side panel that reads the design system a live page runs, lets a person edit it, and hands you the change at token level over a local MCP bridge. Use when the codename MCP server is registered, when the user mentions Codename, a hand-off, a brief, or asks you to apply a design change they made on the page.
+description: Work with the Codename panel, a Chrome side panel that reads the design system a live page runs, lets a person edit it, and hands the change over at token level through a local MCP bridge. Use when the codename MCP server is registered, or the user mentions Codename, a hand-off or brief from it, or a design change they made on the page.
 ---
 
 # Codename

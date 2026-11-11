@@ -1,14 +1,6 @@
 ---
 name: design-system
-description: >
-  Build, document and govern a design system on one naming scheme — three layers
-  (background, card, foreground), hover and pressed on every colour that acts, one inactive
-  set, a primary/secondary/tertiary hierarchy, brand in three levels — with Atomic Design
-  for components. Use when the user mentions: design
-  system, design tokens, variables, component library, pattern library, UI kit, style guide,
-  atomic design, atoms/molecules/organisms, Storybook, dark mode setup, or asks to create,
-  audit or extend a component. Apply whenever building reusable UI, even if the words are
-  not used.
+description: One naming scheme for a project's variables (background, card, foreground; hover and pressed; one inactive set; brand in three levels), the component contract, and the single list of component states. Use for: tokens, CSS variables, theme, dark mode setup, a new or changed component, which states a component needs (hover, pressed, focus, loading, empty).
 ---
 
 # Design system
@@ -96,7 +88,7 @@ Atomic level:  atom / molecule / organism
 Level:         primary / secondary / tertiary   (→ --brand, --brand-secondary, --brand-tertiary)
 Intent:        default / success / warning / danger / info
 Size:          sm / md / lg
-States:        default, hover, pressed, focus (ring), inactive, loading, invalid, empty
+States:        default, hover, pressed, focus (ring), inactive, loading, invalid, empty, success (see references/STATES.md)
 Variables:     the names it uses — never a raw value
 Accessibility: role, keyboard behaviour, 44px touch target on mobile, contrast on background and on card
 Do / Don't:    one of each, at least
@@ -104,6 +96,8 @@ Do / Don't:    one of each, at least
 
 Hover and pressed come from the variable's own states. Inactive is the
 inactive set plus `aria-disabled`. Focus is `--focus` as a ring.
+`references/STATES.md` is the one list of states for every skill: what each
+is called, what it uses, and when a component needs it.
 
 ### React and Tailwind output
 

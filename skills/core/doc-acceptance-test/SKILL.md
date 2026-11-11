@@ -1,14 +1,7 @@
 ---
 name: doc-acceptance-test
-description: >
-  Expert skill for testing documentation that an AI agent has to build from — design
-  system docs, SKILL.md files, AGENTS.md, component guidelines, API references. Use when
-  the user asks: "test my docs", "can an agent actually build from this", "is my design
-  system AI-readable", "validate my SKILL.md", "review my agent instructions", "why does
-  the AI keep getting my system wrong", or after writing or exporting any documentation
-  whose audience is a model rather than a person. Runs a fresh agent against the docs,
-  makes it build something real, and harvests a critique of the documentation itself.
-  Produces specific defects with fixes — not a readability opinion.
+description: Test documentation an agent has to build from (design system docs, a SKILL.md, AGENTS.md): a fresh agent builds something real from the docs alone and reports the defects in the docs. Slash only: run it with /doc-acceptance-test.
+disable-model-invocation: true
 ---
 
 # Doc Acceptance Test
@@ -170,7 +163,5 @@ One run is a single agent doing real work — not free, not expensive. Run it:
 
 - `ui-audit` — critiques an existing *interface*; this critiques the *documentation* an
   interface is built from
-- `design-systems` — token architecture and governance; this validates that the architecture
-  survived contact with a consumer
-- `design-communication` — writing for humans; the failure modes are different, because a
-  human asks when something is unclear and a model guesses
+- `design-system`: the naming scheme and component contract; this checks that they survive
+  contact with an agent that has to build from them
