@@ -67,18 +67,22 @@ One source, every state visible, no copies drifting apart. The list of states an
 
 A canvas fills up, and the person opening it has to see at once what is waiting for them and what is past work.
 
-* Three pages, always in this order: `? Review` (only what waits for a pick), `Current · <version>` (the design the
-  code matches) and `Wireframes` (every past round). The page list never grows.
-* On Wireframes each past round is a section: a big title with the round's name and date, sections side by side,
-  newest on the left. A past round is never called approved as a whole: most of what is on it was not picked.
-* The canvas opens on the page that is waiting (`launch.page`). When nothing waits, it opens on Current.
+* Four pages, always in this order, so anyone can tell what is confirmed from what is built:
+  `? Review` (only what waits for a pick), `Approved · to build` (picked, not live yet), `Built` (matches what is
+  live) and `Explorations` (every round with all its options). The page list never grows.
+* On Approved and Built, each pick is a section: a title with its name and the date it was approved, a status sticky,
+  and only the picked boards. On Explorations each round is a section with a big title, side by side, newest on the
+  left. A round is never called approved as a whole: most of what is on it was not picked.
+* The canvas opens on the page that is waiting (`launch.page`). When nothing waits, it opens on Approved, or on Built when that is empty too.
 * Every section that needs a pick gets a sticky beside its row that starts `? REVIEW` (orange) and says exactly what to
-  pick and what you suggest. Only the option that was picked is approved: its sticky starts `✓ APPROVED` (green), names that option and the date, and says `NOT BUILT YET` until it ships. One not
+  pick and what you suggest. Only the option that was picked is approved: its sticky starts `✓ APPROVED` (green) and names that option and the date; on the Approved page it adds `NOT BUILT YET`, on Built it reads `✓ BUILT`. One not
   ready to look at starts `… IN PROGRESS` (blue). The symbol and the word carry the meaning; the colour is extra.
 * Orange, green and blue are only for these markers. Explanations and concept labels use the default or grey.
-* When the user picks: fold the pick into Current, move the round to Wireframes as the newest section with the
-  approved sticky naming the pick, and leave Review empty or showing the next round. When Review is empty the canvas
-  opens on Current.
+* When the user picks: copy the picked boards to Approved as a new section (new files; the round stays whole), mark
+  the picked option in its round with the approved sticky, and move the round to Explorations. Review is left empty
+  or showing the next round.
+* When a pick ships: move its section from Approved to Built and change its sticky to `✓ BUILT`. Built locally but
+  not deployed is still Approved, and its sticky says so.
 * The user picks by commenting on the option they want, in the canvas's comment mode; no picker form and no extra
   boards. The review sticky ends with "Comment on the one you want". When they say they have commented, read the
   threads (ArtifactComments), act on each, reply and resolve the ones sent to Claude, and say which stay open.
