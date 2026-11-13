@@ -404,11 +404,18 @@ Each section is what was learned printing one kind of part. Read the section tha
   run with no air above starts a 2-pixel opening at its middle, and the rest is fill
   (`band_fill_45` in `moss-pole/build_moss_pole.py`; 1.4 g instead of about 5 g). Never add a
   downward-pointing tooth: its tip starts printing in mid-air.
-- **Twist-locks need a clamp.** Pins in an L-slot with clearance turn freely and never feel tight.
-  Make the slot's turning leg climb a ramp so the pin pulls the two faces together (about 0.25 mm
-  of squeeze), then drop into a pocket (0.10 mm) for the last 1.5° so it clicks and holds. With
-  45° pin and slot faces, allow for the radial offset between where each face starts when setting
-  the heights. Ship short fit rings before the long prints.
+- **Twist-locks need a clamp, but a small one.** Pins in an L-slot with clearance turn freely and
+  never feel tight. Make the slot's turning leg climb a ramp so the pin pulls the two faces
+  together, then drop into a shallow pocket for the last 1.5° so it clicks and holds.
+  - In PETG, 0.25 mm of squeeze with a 0.15 mm pocket drop was far too much: pins snapped, and
+    once clicked it wouldn't turn back. Test about 0.05 to 0.15 mm of squeeze, with a pocket drop
+    of 0.05 to 0.08 mm.
+  - Print joint-only rings (bands, spigot, socket; no lattice), several settings on one plate,
+    told apart by notches. Shards of pattern on a joint test waste plastic and time. When the
+    setting lives in one part (the socket's ramp), print one mating part and several of the other.
+    Try the gentlest first, so a tight one can't wear the shared part.
+  - With 45° pin and slot faces, allow for the radial offset between where each face starts when
+    setting the heights.
 - **PETG lattices string on travel across the openings.** Slice with Avoid crossing wall on
   (`reduce_crossing_wall`, Quality › Advanced) and the overhang fan at about 80 %
   (`overhang_fan_speed`, a filament setting: list it in `different_settings_to_system[1]`).
