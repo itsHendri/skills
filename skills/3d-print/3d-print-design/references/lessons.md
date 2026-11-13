@@ -391,6 +391,24 @@ Each section is what was learned printing one kind of part. Read the section tha
 - **Find what printed in the air from the slice itself:** the gcode marks `; FEATURE: Overhang
   wall` and `Bridge`. Group those moves by height and angle around the part's centre (map back
   through the item transform in `3D/3dmodel.model`), and compare with the owner's photos.
+- **Crisp beats smooth for lattices.** Round struts merged through a distance grid with a fillet
+  at every join print as bulging nodes and lumpy curves (moss pole round 10). The crisp recipe,
+  like the MakerWorld lattice bowls and lamps:
+  - near-square flat ribbons of one width (1.6 mm = 4 lines; thin lines 1.2 mm);
+  - no fillet step in the merge, just the union and a light smoothing;
+  - line ends that stop inside the line they land on (0.4 × the width past the centre line). An
+    overlap of 0.8 × the width pokes out the far side as a bump.
+- **A flat band over a lattice needs only 45° fill.** Filling every column down to the first strut
+  makes deep solid teeth. Instead, go row by row from the band down: air in a row may only be the
+  row below's air grown by one pixel each side, so every opening closes in a pointed roof. A cell
+  run with no air above starts a 2-pixel opening at its middle, and the rest is fill
+  (`band_fill_45` in `moss-pole/build_moss_pole.py`; 1.4 g instead of about 5 g). Never add a
+  downward-pointing tooth: its tip starts printing in mid-air.
+- **Twist-locks need a clamp.** Pins in an L-slot with clearance turn freely and never feel tight.
+  Make the slot's turning leg climb a ramp so the pin pulls the two faces together (about 0.25 mm
+  of squeeze), then drop into a pocket (0.10 mm) for the last 1.5° so it clicks and holds. With
+  45° pin and slot faces, allow for the radial offset between where each face starts when setting
+  the heights. Ship short fit rings before the long prints.
 - **PETG lattices string on travel across the openings.** Slice with Avoid crossing wall on
   (`reduce_crossing_wall`, Quality › Advanced) and the overhang fan at about 80 %
   (`overhang_fan_speed`, a filament setting: list it in `different_settings_to_system[1]`).
