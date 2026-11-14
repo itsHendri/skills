@@ -407,15 +407,26 @@ Each section is what was learned printing one kind of part. Read the section tha
 - **Twist-locks need a clamp, but a small one.** Pins in an L-slot with clearance turn freely and
   never feel tight. Make the slot's turning leg climb a ramp so the pin pulls the two faces
   together, then drop into a shallow pocket for the last 1.5° so it clicks and holds.
-  - In PETG, 0.25 mm of squeeze with a 0.15 mm pocket drop was far too much: pins snapped, and
-    once clicked it wouldn't turn back. Test about 0.05 to 0.15 mm of squeeze, with a pocket drop
-    of 0.05 to 0.08 mm.
+  - The print adds squeeze of its own, about 0.1 to 0.2 mm: a pin's 45° underside droops a little
+    in PETG and the slot floor prints in layer steps. So a ramp drawn at exactly 0 mm already binds.
+    On the moss pole, +0.25 mm snapped pins, +0.05 mm was still tight, and the one that felt right
+    was drawn as a gap: peak -0.10, rest -0.20 mm, a 0.10 mm click drop. Test in 0.1 mm steps from
+    about -0.1 to -0.3 mm, not in finer steps than the print can show.
+  - The click wears in over the first few twists. Pick from the worn-in feel, and if the best one
+    goes slightly soft, make it a touch firmer (about 0.05 mm) with a deeper drop (0.12 mm).
+    Print a fresh mating part for each test: worn pins make every socket feel looser.
   - Print joint-only rings (bands, spigot, socket; no lattice), several settings on one plate,
     told apart by notches. Shards of pattern on a joint test waste plastic and time. When the
     setting lives in one part (the socket's ramp), print one mating part and several of the other.
     Try the gentlest first, so a tight one can't wear the shared part.
   - With 45° pin and slot faces, allow for the radial offset between where each face starts when
     setting the heights.
+- **Thin first layers need a forced brim.** A socket printed mouth-down stands on a thin ring
+  (about 2 mm, broken by slot entries and the lead-in chamfer). "Auto" brim added none, and the
+  rings came loose twice (moss pole joint test). Set an inner and outer brim (5 mm, 0.15 mm gap so
+  it peels off), slow the first layer to 30 mm/s, and never cut label notches through the first
+  layer: start them 0.4 mm up. Check the bed contact area from the STL (faces at z = 0) for every
+  ring-shaped part.
 - **PETG lattices string on travel across the openings.** Slice with Avoid crossing wall on
   (`reduce_crossing_wall`, Quality › Advanced) and the overhang fan at about 80 %
   (`overhang_fan_speed`, a filament setting: list it in `different_settings_to_system[1]`).

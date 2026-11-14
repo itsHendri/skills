@@ -43,6 +43,8 @@ Changed:
 
 ### Added
 - `3d-print-design` lessons: the crisp lattice recipe (flat ribbons, no fillets, short line-end overlap), 45° fill under a flat band, and a clamping ramp for twist-locks, from the moss pole's round 10.
+- `3d-print-design` lessons: twist-lock ramps are drawn as a small gap (the print adds 0.1 to 0.2 mm of squeeze), the click wears in, and each test needs a fresh mating part.
+- `3d-print-design`: force an inner and outer brim on thin ring first layers, no notches through the first layer, and mark preset-missing keys like `brim_type` as changed.
 - `3d-print-design` lessons: twist-lock squeeze corrected after a print (0.25 mm snapped pins; test 0.05 to 0.15 mm with joint-only rings).
 - `3d-print-design`: "Lattice tubes drawn from lines" (pointed arches overlapping two rows up, loose line ends, finding over-air moves in the gcode, PETG stringing settings), from the moss pole's wisps.
 - `tune-live` skill: a temporary panel (tune-panel, the studio's own, themed per brand) to find feel values, baked in and removed in one change. `motion-design` points to it.

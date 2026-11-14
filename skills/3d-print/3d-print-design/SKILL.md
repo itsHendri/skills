@@ -56,7 +56,8 @@ Things that went wrong on 2026-11-07 (`macbook-server-stand`), and what stops ea
 2. **Printer, process, plate:** the owner's machine preset (for a P2S: `Bambu Lab P2S 0.4 nozzle`), the
    standard process (`0.20mm Standard @BBL P2S`) unless the part needs finer layers, and their plate
    (`Textured PEI Plate`).
-3. **Overrides marked as changed** (`mark_modified`, above).
+3. **Overrides marked as changed** (`mark_modified`, above). Count a key the preset doesn't
+   name at all (`brim_type` is one) as changed too, or the app shows its own default.
 4. **Read the 3MF back before saying it's ready.** Unzip `Metadata/project_settings.config` and
    check:
    - `printer_settings_id`, `print_settings_id` and `filament_settings_id`;
