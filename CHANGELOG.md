@@ -5,6 +5,19 @@ All notable changes to this skill system. Format based on
 
 ## [Unreleased]
 
+### 2026-11-17: hendri-figures
+
+Added:
+- `hendri-figures` (design): product and hardware figures. The Anatomy kit (third party, see `vendor.md`) builds the isometric model; `scripts/pen.mjs` redraws it as a static SVG in the pen look picked in rounds (Slate drawing, even hatching over a grey wash, stippled shadow, Brand ink notes on a curved line with an open ring). `scripts/bake.mjs` keeps two plain themes, line and tone.
+
+Changed:
+- `hendri-slides`: the ruler runs along the bottom on a thin line, with small notches between the slide ticks, no purple marker and the slide number fixed at the right end. Content starts 152px from each side, figures fill a 1616 by 580 box and carry no Fig caption, every callout has a leader line, sticky notes are lifted, in brand violet ink and one text size. Hardware figures now point to `hendri-figures`.
+
+### 2026-11-17: hendri-slides joins the repo
+
+Added:
+- `hendri-slides` (design): the slide rules that lived only in the Claude app. New in this version: no footer, a plain brand grey page, a ruler with one tick per slide that carries the page number to its left, and Blueprint line drawings with mono callouts as the default figure style.
+
 ### 2026-11-11: the skills session (23 skills to 15)
 
 A scan of every Claude Code session from 2026-09-04 to 2026-11-11 (107 sessions) showed 15 of 26 skills never used, and the broad design skills not loading even when their topic came up (accessibility 0 of 12 times, framer-marketplace 0 of 9, motion-design 0 of 7). The working method also changed: UI is now designed in code and on the canvas, with no design-then-handoff step.

@@ -5,6 +5,7 @@ Skills I use but don't write. They're installed by their own tools, never copied
 | Group | Skills | Install | Where they land |
 |---|---|---|---|
 | video | 12 `remotion-*` skills (best practices, captions, create, ...) | `npx skills add remotion-dev/skills` in the videos repo | that repo's `.agents/skills/`, pinned by its `skills-lock.json` |
+| design | Anatomy (`wheresryan22/anatomy`, MIT): the isometric engine under `hendri-figures` | `git clone https://github.com/wheresryan22/anatomy` next to the other tools; `git pull` to update | its own folder, never edited; `hendri-figures` imports `kit/iso-kit.mjs` from it |
 
 Replaced:
 - `framer` and `framer-code-components` (from `npx @framer/agent setup`): removed 2026-11-09 with the Framer CLI, in favour of the Framer MCP server. Don't reinstall them alongside it.

@@ -25,7 +25,7 @@ Slash-only skills are not in the session's list. Type the name to run one.
 | [`/machine-handoff`](skills/core/machine-handoff/SKILL.md) | Auditing a Mac before wiping or handing it back: unpushed commits, uncommitted changes, stashes, repos with no remote, config git doesn't cover. |
 | [`/doc-acceptance-test`](skills/core/doc-acceptance-test/SKILL.md) | Testing documentation an agent must build from: a fresh agent builds something real and reports the defects in the docs. |
 
-### design: designing in code (8)
+### design: designing in code (9)
 
 | Skill | What it owns |
 |---|---|
@@ -37,6 +37,8 @@ Slash-only skills are not in the session's list. Type the name to run one.
 | [`tune-live`](skills/design/tune-live/SKILL.md) | Finding feel values with tune-panel, baking the numbers in and removing the panel. |
 | [`content-ux-writing`](skills/design/content-ux-writing/SKILL.md) | The words in the interface, after reading the brand's voice. |
 | [`ui-audit`](skills/design/ui-audit/SKILL.md) | Reviewing existing UI through six lenses, with a fresh-eyes pass and the full accessibility check. |
+| [`hendri-figures`](skills/design/hendri-figures/SKILL.md) | Product and hardware figures in a pen look: an Anatomy model redrawn as a static SVG with hand lines, hatching, a stippled shadow and handwritten notes. |
+| [`hendri-slides`](skills/design/hendri-slides/SKILL.md) | Slide decks in Hendri's own look: the page, the ruler that counts the slides, Blueprint figures and motion. |
 
 ### web: shipping for the web (installs design too) (2)
 
