@@ -162,3 +162,44 @@ export function notesCross(pairs) {
   for (let i = 0; i < pairs.length; i++) for (let j = i + 1; j < pairs.length; j++) if (hit(pairs[i][0], pairs[i][1], pairs[j][0], pairs[j][1])) return [i, j];
   return null;
 }
+
+// ---- Flat drawings (diagrams, front views, flow lines) in the same hand ----
+// Shape helpers: each returns a path of straight pieces (M, L, Z), which is what the hand strokes work on.
+export const poly = (pts, closed = false) => pts.map((p, i) => `${i ? 'L' : 'M'}${n1(p[0])} ${n1(p[1])}`).join('') + (closed ? 'Z' : '');
+export const rrect = (x, y, w, h, r = 0) => {
+  if (!r) return poly([[x, y], [x + w, y], [x + w, y + h], [x, y + h]], true);
+  const pts = [], arc = (cx, cy, a0) => { for (let i = 0; i <= 5; i++) { const a = a0 + (i / 5) * Math.PI / 2; pts.push([cx + Math.cos(a) * r, cy + Math.sin(a) * r]); } };
+  arc(x + w - r, y + r, -Math.PI / 2); arc(x + w - r, y + h - r, 0); arc(x + r, y + h - r, Math.PI / 2); arc(x + r, y + r, Math.PI);
+  return poly(pts, true);
+};
+export const ring = (cx, cy, r, n = 36) => poly(Array.from({ length: n }, (_, i) => [cx + Math.cos((i / n) * 6.2832) * r, cy + Math.sin((i / n) * 6.2832) * r]), true);
+// points along a quadratic curve, for a hand, a pocket, a cable
+export const curve = (a, c, b, n = 12) => Array.from({ length: n + 1 }, (_, i) => { const u = i / n; return [(1 - u) ** 2 * a[0] + 2 * u * (1 - u) * c[0] + u * u * b[0], (1 - u) ** 2 * a[1] + 2 * u * (1 - u) * c[1] + u * u * b[1]]; });
+
+// shapes, drawn in order: { d, w, lit, tone, dash, paper, thin } or { stipple: d } for a shadow on the ground.
+//   lit: the one part the drawing is about (heaviest outline, dense hatch). tone: 0 (darkest) to 3, hatching over a wash.
+//   dash: drawn dashed, for "later" or "not built". thin: a connecting line. A closed shape covers what is under it
+//   with paper unless paper is false. Returns the marks without an <svg> wrapper.
+export function flat(shapes, { seed = 7, id = 'f', ink = PEN.ink, wobble = 1 } = {}) {
+  INK = ink; CLS = 'pl'; IDX = 0;
+  const R = rng(seed); let clip = 0, out = '';
+  const line = (d, w, o, dash) => `<path d="${d}" fill="none" stroke="${ink}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"${o < 1 ? ` opacity="${o}"` : ''}${dash ? ` stroke-dasharray="${dash}"` : ''}/>`;
+  for (const s of shapes) {
+    if (s.stipple) {
+      const fp = parse(s.stipple), fb = bbox(fp), Q = rng(1); let d = '';
+      for (let x = fb.x0; x < fb.x1; x += 5.2) for (let y = fb.y0; y < fb.y1; y += 5.2) { const px = x + (Q() - 0.5) * 5.2, py = y + (Q() - 0.5) * 5.2; if (fp.some((q) => inside(px, py, q.pts))) d += `M${n1(px)} ${n1(py)}h0`; }
+      out += `<path d="${d}" fill="none" stroke="${ink}" stroke-width="2.2" stroke-linecap="round" opacity="0.85"/>`;
+      continue;
+    }
+    const subs = parse(s.d), closed = subs.some((q) => q.closed), level = s.tone === false ? null : s.tone ?? (s.lit ? 1 : null); // tone: false keeps a lit shape unhatched
+    if (closed && s.paper !== false && !s.dash) out += `<path d="${s.d}" fill="${PEN.paper}"/>`;
+    if (closed && level !== null) {
+      const c = `${id}c${clip++}`;
+      out += `<path d="${s.d}" fill="${WASH[level]}"/><clipPath id="${c}"><path d="${s.d}"/></clipPath><g clip-path="url(#${c})">${tone('even', level, bbox(subs), R)}</g>`;
+    }
+    const w = s.w ?? (s.lit ? 4.2 : s.thin ? 1.6 : 2.4);
+    out += line(hand(s.d, R, (s.thin ? 0.7 : 0.9) * wobble, s.thin || s.dash ? 0 : 2.5), w, 1, s.dash ? '13 11' : '');
+    if (!s.thin && !s.dash) out += line(hand(s.d, R, 1.5 * wobble, 4), 1, 0.55);
+  }
+  return out.replace(/ class="p[a-z]" pathLength="1" style="--i:\d+"/g, '');
+}

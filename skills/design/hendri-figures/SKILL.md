@@ -1,6 +1,6 @@
 ---
 name: hendri-figures
-description: "Product and hardware figures in Hendri's pen look: an isometric model drawn by the Anatomy kit, then redrawn as a static SVG with hand-like lines, hatching over a grey wash, a stippled shadow and handwritten notes. Use for: figure, anatomy drawing, isometric, exploded view, pen drawing, draw this device. Not for flow diagrams or charts. Next: hendri-slides."
+description: "Product and hardware figures in Hendri's pen look: an isometric model drawn by the Anatomy kit, then redrawn as a static SVG with hand-like lines, hatching over a grey wash, a stippled shadow and handwritten notes. Use for: figure, anatomy drawing, isometric, exploded view, pen drawing, draw this device, a diagram in the pen look. Not for charts. Next: hendri-slides."
 ---
 
 # Hendri figures
@@ -30,6 +30,13 @@ The look, picked by Hendri in rounds on 2026-11-17:
 - Notes are Brand ink #4A3FE0 in Caveat, about 40px at slide scale. The line has a paper-coloured edge under it and the ring has a paper fill and a paper halo, so both read over hatching. The halo sits under the line, never over it: the line runs right up to the ring.
 - Nothing is told apart by colour alone: the lit part is marked by line weight and hatch density.
 - Other textures exist in the code for later rounds (`stipple`, `engrave`, `halftone`, `wash`, `mixed`), and `ramp` gives each tone level its own ink. Use them only when Hendri asks.
+
+## Flat drawings in the same hand
+Diagrams, front views and flow lines do not need a model. `flat(shapes, { seed, id })` in `scripts/pen.mjs` draws them directly in the pen's hand, so a deck's diagrams match its figures.
+- Shapes are built with `rrect`, `ring`, `poly` and `curve` and drawn in order; a closed shape covers what is under it.
+- `lit: true` marks the one part the drawing is about (heavy outline, hatching). `tone: 0` to `3` hatches a face over its wash. `dash: true` means later or not built. `thin: true` is a connecting line. `{ stipple: d }` is a shadow on the ground.
+- If hatching carries a meaning in a diagram (hatched squares store something), keep it off shapes that do not: `tone: false` leaves a lit shape unhatched.
+- The result is small (10 to 35 KB), so in a Slides deck it goes inline; labels are handwritten notes laid over it. In a row of many steps, put the labels alternately above and below the line so they do not collide.
 
 `scripts/bake.mjs` holds the two plain themes (`line` and `tone`) for when a clean technical drawing is wanted instead of the pen look.
 

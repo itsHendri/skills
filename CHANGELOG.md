@@ -10,6 +10,8 @@ All notable changes to this skill system. Format based on
 Added:
 - `hendri-figures` (design): product and hardware figures. The Anatomy kit (third party, see `vendor.md`) builds the isometric model; `scripts/pen.mjs` redraws it as a static SVG in the pen look picked in rounds (Slate drawing, even hatching over a grey wash, stippled shadow, Brand ink notes on a curved line with an open ring). `scripts/bake.mjs` keeps two plain themes, line and tone.
 
+- `hendri-figures`: `flat()` draws diagrams, front views and flow lines in the same hand without a model (`rrect`, `ring`, `poly`, `curve` build the shapes).
+
 Changed:
 - `hendri-slides`: the ruler runs along the bottom on a thin line, with small notches between the slide ticks, no purple marker and the slide number fixed at the right end. Content starts 152px from each side, figures fill a 1616 by 580 box and carry no Fig caption, every callout has a leader line, sticky notes are lifted, in brand violet ink and one text size. Hardware figures now point to `hendri-figures`.
 
