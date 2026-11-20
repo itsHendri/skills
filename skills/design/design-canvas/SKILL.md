@@ -99,8 +99,18 @@ A canvas fills up, and the person opening it has to see at once what is waiting 
   generic look or lorem ipsum.
 * Diagnose before drawing: name the structural problems as claims the user can push
   back on. The concepts answer the diagnosis.
-* Research patterns (Mobbin or a pattern library if connected, else a quick web
-  search) and report what others do, including "nobody does X".
+* Research before drawing, every round that adds new concepts. It is a step, not an
+  option: a round does not start without it.
+  * Mobbin first when it is connected: search the screen or flow, and the widget or
+    component, as shipped apps do it today. Look at the images, not the metadata.
+    Three to six references are enough. They show working patterns people already
+    know, which is the cheapest place to start and to learn from.
+  * Not connected, or it has nothing close: a quick web search, and say which you used.
+  * Report it in the reply and in `docs/design/<area>.md` under "References": each
+    reference linked, one line on what it does, and what nobody does ("nobody does X").
+  * Each concept says which reference it borrows from, or that it is new on purpose.
+  * A round that only iterates on a picked concept may reuse the earlier references;
+    say so in one line.
 
 ## 4. Run each round
 
@@ -141,6 +151,7 @@ canvas and the code agree.
 * A new canvas per round, or forked v2 files instead of a new stage page.
 * Deleting or renumbering earlier concepts; editing a locked stage.
 * Generic mockups: the host's look, invented content, the wrong size.
+* Drawing a first round from memory, with no references looked up.
 * Variety without a thesis; answering only the loudest ask.
 * Silent decisions: something dropped or changed while drawing without saying so.
 * Verifying with screenshots or browsers when the user didn't ask (the type forbids it).
