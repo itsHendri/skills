@@ -5,6 +5,11 @@ All notable changes to this skill system. Format based on
 
 ## [Unreleased]
 
+### 2026-11-22: 3d-print-design
+
+Changed:
+- `3d-print-design`: the handover checklist says what to do with a spool from another brand (Bambu's Generic preset of the same type and finish, checked against the label's temperature range) and that filament overrides tuned for one material don't carry over.
+
 ### 2026-11-17: hendri-figures
 
 Added:

@@ -53,6 +53,10 @@ Things that went wrong on 2026-11-07 (`macbook-server-stand`), and what stops ea
    the workspace CLAUDE.md, in owner memory, or in the project README. Bambu PETG **Matte** isn't PETG
    Basic: the first slice used Basic and the owner had to correct it. If unsure, ask before
    slicing. Set the colour with `--filament-colour` (the owner's spool colour).
+   A spool from another brand (Elegoo, eSun...) has no Bambu preset: use Bambu's `Generic <type>
+   <finish>` preset for the printer (`Generic PLA Silk @BBL P2S`) and check its nozzle temperature
+   against the range on the spool's label. Filament overrides tuned for one material (a PETG
+   overhang fan of 80 %) don't carry over to another; PLA presets already run that fan at 100 %.
 2. **Printer, process, plate:** the owner's machine preset (for a P2S: `Bambu Lab P2S 0.4 nozzle`), the
    standard process (`0.20mm Standard @BBL P2S`) unless the part needs finer layers, and their plate
    (`Textured PEI Plate`).
