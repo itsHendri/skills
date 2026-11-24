@@ -95,6 +95,8 @@ cd skills
 
 **Just a few skills:** `npx skills add itsHendri/skills --skill visual-ui` copies one in (a snapshot; re-run to update).
 
+**Sharing with a team, or with claude.ai:** see [sharing.md](sharing.md).
+
 **Project skills** (only true for one project) live in that project's `.claude/skills/`. If you use Codex there too, link `.agents/skills` to it.
 
 ## Changelog
