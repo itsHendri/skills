@@ -106,6 +106,9 @@ A canvas fills up, and the person opening it has to see at once what is waiting 
     Three to six references are enough. They show working patterns people already
     know, which is the cheapest place to start and to learn from.
   * Not connected, or it has nothing close: a quick web search, and say which you used.
+  * A niche product (a type foundry, a synth, a print shop): also open the real sites of
+    that field in the browser and look at their pages, since Mobbin rarely has them and
+    generic SaaS patterns read as generic.
   * Report it in the reply and in `docs/design/<area>.md` under "References": each
     reference linked, one line on what it does, and what nobody does ("nobody does X").
   * Each concept says which reference it borrows from, or that it is new on purpose.
@@ -122,6 +125,10 @@ A canvas fills up, and the person opening it has to see at once what is waiting 
    you can name (density, hierarchy, grouping, type scale). Section iterations: small
    artboards of just that section, at its real width, next to the full screen; the chosen
    one is folded back into the full screen.
+   "UI" and "UX" ask for different rounds. UX directions change structure (what sits
+   where, the flow). UI directions keep the structure fixed and change only the look:
+   type, colour, surfaces, how controls are drawn. When the user asks for UI, draw one
+   screen in several looks, not new layouts.
 3. Continuous levers (density, accent, item count) become `data-props` tweaks so the user
    can try them in the Tweaks panel; copy stays literal so they can retype it.
 4. In the reply: each concept's thesis and honest cost, a recommendation, what you'd

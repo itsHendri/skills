@@ -5,6 +5,11 @@ All notable changes to this skill system. Format based on
 
 ## [Unreleased]
 
+### 2026-11-25: design-canvas
+
+Changed:
+- `design-canvas`: research for a niche product also opens the real sites of that field in the browser, since Mobbin rarely has them. A round says whether it is UX (structure changes) or UI (one structure, several looks), because a UI request answered with new layouts misses.
+
 ### 2026-11-22: 3d-print-design
 
 Changed:
