@@ -117,6 +117,8 @@ Things that went wrong on 2026-11-07 (`macbook-server-stand`), and what stops ea
 | Horizontal pin | Flat underside, so it prints as a short bridge |
 | Overhangs | Fine up to 45° from vertical. Report anything steeper that isn't a short bridge |
 | Plate edges that press on paper or skin | Chamfer about 0.8 mm |
+| Small loose part on the plate (peg, pin, key) | Give it a foot at least 10 mm across. A free-standing 5 mm peg in PETG on a 0.6 nozzle was knocked off in the first layers (`health-check`, 2026-11-26) |
+| Webs between neighbouring holes | At least 2 mm when a 0.6 nozzle may print it. 1.3 mm webs lifted on a 0.6; 2.3 mm is the fix |
 | Embossing die edges | Rounded: male top edge 0.4 mm, female rim 0.5 mm (default) |
 | Layer height for fine detail | 0.12 mm. Walls 4 (Arachne), 40 % gyroid, ironing on top faces |
 
