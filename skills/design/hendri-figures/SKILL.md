@@ -57,6 +57,7 @@ Picked by Hendri on 2026-11-17. The figure must be complete and readable with no
 
 ## Light and dark on a web page
 - A figure is drawn in seven fixed colours: paper #F3F6F8, ink #1F262D, notes #4A3FE0 and the four washes. On a site with a theme switch, put the drawing into the page (not an `<img>`) and repaint those colours with the site's tokens through CSS on the SVG's own attributes (`[fill="#F3F6F8" i] { fill: var(--paper-token) }`); mix the washes from ink and paper with `color-mix` so they darken too.
+- The exception is a figure whose drawing is about light and dark itself (both themes side by side): repainted, its light half goes dark. Let such a figure opt out and keep its own colours, with a flag the page's figure component reads.
 - An SVG shown as an image is sealed: it can't read the page's CSS or the site's switch, only the OS setting. Cards that show a figure fetch its SVG and draw it inline for the same reason.
 - A share image (og:image) must be a PNG: link previews ignore SVG. Keep a raster still for that next to the SVG one.
 
