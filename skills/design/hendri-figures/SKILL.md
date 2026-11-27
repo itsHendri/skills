@@ -44,7 +44,7 @@ Diagrams, front views and flow lines do not need a model. `flat(shapes, { seed, 
 - Note lines never cross each other, and a line never passes over another note's ring. Move a label to another side before accepting a crossing; `notesCross(pairs)` in `scripts/pen.mjs` catches the straight-line case, and a rendered look catches the rest.
 - A note is a short label, a curved line and a ring on the part. Place labels in the left and right margins, never over the drawing, and keep lines from crossing each other or the object where a different side would do.
 - In a slide the label is real text laid over the image (fonts do not load inside an SVG shown as an image). On a web page it can be text in the SVG.
-- No "Fig n" caption under a figure: Hendri finds it noise. If a shape or line style carries meaning, say so in one short plain line; otherwise the drawing and its notes are enough.
+- No caption under a figure, not even a descriptive line: Hendri finds them noise (he removed "Fig n" labels, then every caption line under his article figures on 2026-11-27). The drawing and its notes carry it; if a shape or line style carries meaning, say so in a note on the drawing.
 
 ## Motion
 Picked by Hendri on 2026-11-17. The figure must be complete and readable with no motion at all; motion is added on top.
@@ -54,6 +54,11 @@ Picked by Hendri on 2026-11-17. The figure must be complete and readable with no
 - Nothing else moves. Everything stands still for people who ask for reduced motion.
 - In a Slides deck there is no line boil: the drawing stands still. Slides runs no scripts and holds a hard frame switch still (tried as a stepped CSS animation and as the drawing's own timing), and the soft fade that does play reads as a slow shimmer, not a boil. Hendri dropped it on 2026-11-17. The boil is for web pages, where a script or a stepped animation can cut between frames.
 - Notes still arrive in a Slides deck. The drawing is uploaded images stacked in place; each label is one text box, so it stays editable; the note line is a small inline drawing with a `stroke-dashoffset` animation. Keep every arrival delay short (all notes in within about 2.5s): long delays played out of order. An inline drawing may not link to an uploaded image.
+
+## Light and dark on a web page
+- A figure is drawn in seven fixed colours: paper #F3F6F8, ink #1F262D, notes #4A3FE0 and the four washes. On a site with a theme switch, put the drawing into the page (not an `<img>`) and repaint those colours with the site's tokens through CSS on the SVG's own attributes (`[fill="#F3F6F8" i] { fill: var(--paper-token) }`); mix the washes from ink and paper with `color-mix` so they darken too.
+- An SVG shown as an image is sealed: it can't read the page's CSS or the site's switch, only the OS setting. Cards that show a figure fetch its SVG and draw it inline for the same reason.
+- A share image (og:image) must be a PNG: link previews ignore SVG. Keep a raster still for that next to the SVG one.
 
 ## Before calling it done
 - Render it and look: no clipped labels, no note line through another label, the lit part clearly the heaviest.
